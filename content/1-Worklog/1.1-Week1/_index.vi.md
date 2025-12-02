@@ -1,5 +1,5 @@
 ---
-title: "Week 1 Worklog"
+title: "Worklog Tuần 1"
 date: "`r Sys.Date()`"
 weight: 1
 chapter: false
@@ -7,34 +7,34 @@ pre: " <b> 1.1. </b> "
 ---
 
 {{% notice warning %}}
-⚠️ **Note:** The information below is for reference only. Please **do not copy it verbatim** for your own report, including this warning.
+⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-### Week 1 Objectives:
+### Mục tiêu tuần 1:
 
-- Adapt to the working environment at First Cloud Journey.
-- Set up a complete personal AWS environment to prepare for advanced hands-on exercises in the following weeks.
+- Hòa nhập môi trường làm việc ở First Cloud Journey.
+- Thiết lập đầy đủ môi trường AWS cá nhân để chuẩn bị cho các bài thực hành nâng cao ở các tuần tiếp theo.
 
-### Tasks to be completed this week:
+### Các công việc cần triển khai trong tuần này:
 
-| Day | Tasks                                                                                                                                                                                                                  | Start Date  | Completion Date | Reference Materials                      |
-| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | ---------------- | ---------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Get familiar with the office working environment <br> - Memorize office rules and regulations                                                                                | 11/08/2025  | 11/08/2025       |
-| 3   | - Learn about AWS and service categories: <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + Security, Identity & Compliance <br>&emsp; + ... <br>                  | 12/08/2025  | 12/08/2025       | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create a new AWS Free Tier account <br> - Set up MFA for AWS account <br> - Explore the AWS Management Console <br> - **Practice:** <br>&emsp; + Create Admin Group and Admin User <br>&emsp; + Verify the account | 13/08/2025  | 13/08/2025       | <https://000001.awsstudygroup.com/vi/>    |
-| 5   | - Manage cost with AWS Budget <br> - Explore different types of budgets <br> - **Practice:** <br>&emsp; + Create budgets (Cost Budget, Usage Budget, RI Budget, Saving Plans Budget)                                 | 14/08/2025  | 15/08/2025       | <https://000007.awsstudygroup.com/vi/>    |
-| 6   | - Learn how to request support from AWS Support                                                                                                                                                                        | 15/08/2025  | 15/08/2025       | <https://000009.awsstudygroup.com/vi/>    |
+| Thứ | Công việc                                                                                                                                                                                                               | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Làm quen với các thành viên FCJ <br> - Làm quen với môi trường làm việc tại văn phòng <br> - Ghi nhớ các nội quy, quy định tại văn phòng làm việc                                                                   | 11/08/2025   | 11/08/2025      |
+| 3   | - Tìm hiểu AWS và các loại dịch vụ theo chức năng: <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp + Security, Identity & Compliance <br>&emsp; + ... <br>            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Tạo mới tài khoản AWS - Free Tier <br> - Thiết lật MFA cho tài khoản AWS <br> - Khám phá AWS Management Console <br> - **Thực hành:** <br>&emsp; + Tạo Admin Group và Admin User <br>&emsp; + Xác thực tài khoản <br> | 13/08/2025   | 13/08/2025      | <https://000001.awsstudygroup.com/vi/>    |
+| 5   | - Quản lý chi phi với AWS Budget <br> - Tìm hiểu các budget <br> - **Thực hành:** <br>&emsp; + Tạo các budget (Cost Budget, Usage Budget, RI Budget, Saving Plans Budget) <br>                                          | 14/08/2025   | 15/08/2025      | <https://000007.awsstudygroup.com/vi/>    |
+| 6   | - - Tìm hiểu cách yêu cầu hỗ trợ từ AWS Support                                                                                                                                                                         | 15/08/2025   | 15/08/2025      | <https://000009.awsstudygroup.com/vi/>    |
 
-### Week 1 Achievements:
+### Kết quả đạt được tuần 1:
 
-- Gained a general understanding of AWS:
+- Hiểu tổng quan về AWS:
 
-  - Studied AWS service categories: Compute, Storage, Database, Networking, Security, Identity & Compliance, etc.
+  - Tìm hiểu các nhóm dịch vụ AWS theo chức năng: Compute, Storage, Database, Networking, Security, Identity & Compliance,...
 
-- Set up and secured the AWS account.
+- Thiết lập và bảo mật tài khoản AWS.
 
-- Understood how IAM works — a core foundation for secure AWS management.
+- Hiểu cách vận hành IAM – nền tảng quan trọng nhất để quản lý AWS an toàn.
 
-- Learned how to control costs — an essential skill when working with AWS Free Tier.
+- Biết cách kiểm soát chi phí – kỹ năng thiết yếu khi làm việc với AWS Free Tier
 
-- Learned how to handle issues and request official support from AWS.
+- Biết cách xử lý sự cố hoặc yêu cầu hỗ trợ chính thức từ AWS.
