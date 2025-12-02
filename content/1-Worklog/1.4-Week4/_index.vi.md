@@ -12,48 +12,33 @@ pre: " <b> 1.4. </b> "
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu cách deploy ứng dụng thông qua Lightsail, Lightsail Containers.
+* Hiểu cách mở rộng ứng dụng tự động bằng Auto Scaling.
+* Sử dụng được CLI.
+
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                                                                                                                                           | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                             |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------------- | ------------------------------------------- |
+| 2   | - Tìm hiểu về Amazon Lightsail và Amazon Lightsail Containers                                                                                                                                                                       | 29/09/2025   | 29/09/2025       | <https://000045.awsstudygroup.com/vi/>      |
+| 3   | - Tìm hiểu về cách mở rộng ứng dụng với EC2 Auto Scaling <br> - **Thực hành:** <br>&emsp; + Thiết lập Launch Templates <br>&emsp; + Tạo EC2 AMIs <br>&emsp; + Load Balancer <br>&emsp; + Target Group, Auto Scaling Group <br>&emsp; + ... | 30/09/2025   | 30/09/2025       | <https://000006.awsstudygroup.com/vi/>      |
+| 4   | - Tìm hiểu về AWS CloudWatch                                                                                                                                                                                                       | 01/10/2025   | 01/10/2025       | <https://000008.awsstudygroup.com/vi/>      |
+| 5   | - Tìm hiểu về AWS Route 53 <br> - **Thực hành:** <br>&emsp; + Tạo key pair <br>&emsp; + CloudFormation <br>&emsp; + Cấu hình Security Group <br>&emsp; + Thiết lập DNS Outbound Endpoint, Inbound Endpoint <br>&emsp; + Tạo Route 53 Rules | 02/10/2025   | 02/10/2025       | <https://000010.awsstudygroup.com/vi/>      |
+| 6   | - Làm việc lại với AWS CLI <br> - **Thực hành:** <br>&emsp; + Cài đặt AWS CLI <br>&emsp; + Thao tác AWS với các dịch vụ                                                                                                            | 03/10/2025   | 03/10/2025       | <https://000011.awsstudygroup.com/vi/>      |
+
 
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Nắm được nền tảng về triển khai ứng dụng với Amazon Lightsail & Lightsail Containers.
+  * Hiểu mô hình hoạt động của Lightsail.
+  * Biết cách deploy ứng dụng container ở môi trường đơn giản, chi phí thấp.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Hiểu quy trình mở rộng ứng dụng với EC2 Auto Scaling.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Theo dõi ứng dụng bằng AWS CloudWatch.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Sử dụng AWS Route 53.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+8 Sử dụng AWS CLI để thao tác dịch vụ.
 

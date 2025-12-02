@@ -12,48 +12,33 @@ pre: " <b> 1.3. </b> "
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Quản lý IAM: tạo User, Role và Access Key.
+* Thực hành AWS CLI.
+* Quản lý và tối ưu hóa dữ liệu trên S3, CloudFront.
+
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                      |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | --------------------------------------------------- |
+| 2   | - Cấp quyền cho ứng dụng truy cập dịch vụ AWS bằng IAM Role <br> - **Thực hành:** <br>&emsp; + Tạo IAM User và Access key <br>&emsp; + Tạo và sử dụng IAM Role                                   | 22/09/2025   | 22/09/2025      | <https://000048.awsstudygroup.com/vi/1-prepare/>    |
+| 3   | - Tìm hiểu về AWS Cloud9 <br> - Lần đầu biết về AWS CLI                                                                                                                                           | 23/09/2025   | 23/09/2025      | <https://000049.awsstudygroup.com/vi/>              |
+| 4   | - **Thực hành:** <br>&emsp; + Chạy lệnh AWS CLI theo workshop <br>&emsp; + Làm việc với file text .txt <br> - Tìm hiểu về S3                                                                       | 24/09/2025   | 24/09/2025      | <https://000049.awsstudygroup.com/vi/3-useawscli/>  |
+| 5   | - Tìm hiểu về AWS Amplify Hosting <br> - Tìm hiểu kỹ hơn về AWS S3 <br> - **Thực hành:** <br>&emsp; + Block Public Access, Public Object <br>&emsp; + Tăng tốc web tĩnh với CloudFront <br>&emsp; + Di chuyển object sang region khác | 25/09/2025   | 25/09/2025      | <https://000057.awsstudygroup.com/vi/>              |
+| 6   | - Luyện tập thực hành lại AWS S3 <br> - Tìm hiểu Amazon RDS <br> - **Thực hành:** <br>&emsp; + EC2 Instances <br>&emsp; + RDS Database Instances                                                   | 26/09/2025   | 26/09/2025      | <https://000005.awsstudygroup.com/vi/>              |
+
+
 
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Quản lý quyền truy cập và IAM
+  * Hiểu cách cấp quyền cho ứng dụng truy cập dịch vụ AWS thông qua IAM Role.
+  * Thực hành tạo IAM User, Access Key, và sử dụng IAM Role.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Làm quen với AWS CLI và Cloud9.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Quản lý dữ liệu với S3.
+  * Hiểu về AWS S3 và AWS Amplify Hosting.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Làm việc với cơ sở dữ liệu RDS 
+  * Tạo EC2 Instances và RDS Database Instances.
