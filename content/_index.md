@@ -5,7 +5,6 @@ weight: 1
 chapter: false
 ---
 
-    
 # Internship Report
 
 {{% notice warning %}}
@@ -13,25 +12,26 @@ chapter: false
 {{% /notice %}}
 
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Full Name:** Le Hoang Anh
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Phone Number:** 0348663805
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **Email:** anhlhse170327@fpt.edu.vn
 
-&emsp; **Major:** Information Technology
+&emsp; **University:** FPT University
 
-&emsp; **Class:** AWS082025
+&emsp; **Major:** Software Engineering
+
+&emsp; **Class:** AWS092025
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
 &emsp; **Internship Position:** FCJ Cloud Intern
 
-&emsp; **Internship Duration:** From 12/08/2025 to 12/11/2025
+&emsp; **Internship Duration:** From 08/09/2025 to 28/11/2025
 
-![Your profile picture](/images/avatar.png)
+![Your profile picture](/images/hoanganh.jpg)
 
 ### Report Content
 
