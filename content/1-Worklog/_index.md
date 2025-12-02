@@ -22,11 +22,11 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 4:** [AWS Deployment – Scaling – Monitoring – DNS Management](1.4-week4/)
 
-**Week 5:** [Doing task D...](1.5-week5/)
+**Week 5:** [Strengthening Full-Stack Skills and Exploring NoSQL Databases](1.5-week5/)
 
-**Week 6:** [Doing task E...](1.6-week6/)
+**Week 6:** [Practicing AWS CLI, S3, CloudFront, and Lambda](1.6-week6/)
 
-**Week 7:** [Doing task G...](1.7-week7/)
+**Week 7:** [Advanced AWS Practice and Lab Knowledge Consolidation](1.7-week7/)
 
 **Week 8:** [Doing task H...](1.8-week8/)
 
