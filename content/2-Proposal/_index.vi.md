@@ -11,98 +11,130 @@ pre: " <b> 2. </b> "
 
 Tại phần này, bạn cần tóm tắt các nội dung trong workshop mà bạn **dự tính** sẽ làm.
 
-# IoT Weather Platform for Lab Research  
-## Giải pháp AWS Serverless hợp nhất cho giám sát thời tiết thời gian thực  
+# Cloud Racket Platform
 
 ### 1. Tóm tắt điều hành  
-IoT Weather Platform được thiết kế dành cho nhóm *ITea Lab* tại TP. Hồ Chí Minh nhằm nâng cao khả năng thu thập và phân tích dữ liệu thời tiết. Nền tảng hỗ trợ tối đa 5 trạm thời tiết, có khả năng mở rộng lên 10–15 trạm, sử dụng thiết bị biên Raspberry Pi kết hợp cảm biến ESP32 để truyền dữ liệu qua MQTT. Nền tảng tận dụng các dịch vụ AWS Serverless để cung cấp giám sát thời gian thực, phân tích dự đoán và tiết kiệm chi phí, với quyền truy cập giới hạn cho 5 thành viên phòng lab thông qua Amazon Cognito.  
+Badminton Court Finder Platform được thiết kế nhằm hỗ trợ người chơi cầu lông tại TP. Hồ Chí Minh dễ dàng tìm kiếm, đặt sân, và quản lý lịch chơi theo thời gian thực. Ứng dụng được xây dựng hoàn toàn trên kiến trúc AWS Serverless, tích hợp các công nghệ như AI gợi ý cá nhân hóa, phân tích cảm xúc từ đánh giá người dùng, và bản đồ vị trí sân gần nhất thông qua Google API đồng thời hỗ trợ thống kê doanh số hàng tháng cho chủ sân. 
 
 ### 2. Tuyên bố vấn đề  
 *Vấn đề hiện tại*  
-Các trạm thời tiết hiện tại yêu cầu thu thập dữ liệu thủ công, khó quản lý khi có nhiều trạm. Không có hệ thống tập trung cho dữ liệu hoặc phân tích thời gian thực, và các nền tảng bên thứ ba thường tốn kém và quá phức tạp.  
+Việc tìm và đặt sân cầu lông hiện nay chủ yếu dựa vào liên hệ thủ công (số điện thoại hoặc mạng xã hội) , lịch đặt sân không được cập nhật theo thời gian thực và thiếu độ phủ sóng của các sân làm gây trở ngại về ước tính quãng đường đến sân. Đồng thời, chủ sân gặp khó khăn trong việc quản lý, sắp xếp số lượng sân cũng như thống kê doanh thu không hiệu quả.  
 
 *Giải pháp*  
-Nền tảng sử dụng AWS IoT Core để tiếp nhận dữ liệu MQTT, AWS Lambda và API Gateway để xử lý, Amazon S3 để lưu trữ (bao gồm data lake), và AWS Glue Crawlers cùng các tác vụ ETL để trích xuất, chuyển đổi, tải dữ liệu từ S3 data lake sang một S3 bucket khác để phân tích. AWS Amplify với Next.js cung cấp giao diện web, và Amazon Cognito đảm bảo quyền truy cập an toàn. Tương tự như Thingsboard và CoreIoT, người dùng có thể đăng ký thiết bị mới và quản lý kết nối, nhưng nền tảng này hoạt động ở quy mô nhỏ hơn và phục vụ mục đích sử dụng nội bộ. Các tính năng chính bao gồm bảng điều khiển thời gian thực, phân tích xu hướng và chi phí vận hành thấp.  
+Trang web này mang lại quy trình tự động hóa cho việc tìm kiếm, đặt sân và quản lý hiệu quả cho chủ doanh nghiệp. Người dùng có thể tìm kiếm sân gần vị trí của mình thông qua Amazon Location Service , xem tình trạng sân theo thời gian thực trong Amazon DynamoDB và được gợi ý sân phù hợp qua Amazon Personalize. Chủ sân có thể đăng ký và cập nhật thông tin sân, nhận email xác nhận đặt sân qua Amazon SES và thống kê doanh thu qua thông qua bảng điều khiển tùy chỉnh (Custom Dashboard) được xây dựng bằng AWS Amplify, Lambda, và biểu đồ Chart.js từ dữ liệu trong DynamoDB/S3.Giao diện web được triển khai bằng AWS Amplify và quản lý người dùng qua Amazon Cognito.  
 
 *Lợi ích và hoàn vốn đầu tư (ROI)*  
-Giải pháp tạo nền tảng cơ bản để các thành viên phòng lab phát triển một nền tảng IoT lớn hơn, đồng thời cung cấp nguồn dữ liệu cho những người nghiên cứu AI phục vụ huấn luyện mô hình hoặc phân tích. Nền tảng giảm bớt báo cáo thủ công cho từng trạm thông qua hệ thống tập trung, đơn giản hóa quản lý và bảo trì, đồng thời cải thiện độ tin cậy dữ liệu. Chi phí hàng tháng ước tính 0,66 USD (theo AWS Pricing Calculator), tổng cộng 7,92 USD cho 12 tháng. Tất cả thiết bị IoT đã được trang bị từ hệ thống trạm thời tiết hiện tại, không phát sinh chi phí phát triển thêm. Thời gian hoàn vốn 6–12 tháng nhờ tiết kiệm đáng kể thời gian thao tác thủ công.  
+  * Đối với người chơi: dễ dàng tìm và đặt sân phù hợp chỉ trong vài giây, nhận gợi ý cá nhân hóa dựa trên hành vi và vị trí, đồng thời nhận email xác nhận tự động. Thời gian tìm sân giảm 90% (từ 30 phút còn 3 phút), và thời gian xác nhận đặt sân rút ngắn từ 2–24 giờ xuống chỉ còn 5 phút.
+  * Đối với chủ sân: quản lý sân, lịch và người đặt tự động thông qua dashboard trung tâm, giảm 80% thời gian thao tác thủ công. Hệ thống cung cấp báo cáo doanh thu, lượt đặt và đánh giá trung bình trực quan, hỗ trợ ra quyết định dựa trên dữ liệu.
+  * Đối với nhóm phát triển: Hệ thống hoàn toàn không máy chủ (serverless), chi phí vận hành cực thấp (<1 USD/tháng ở giai đoạn đầu, ước tính $8–15/tháng sau Free Tier). Hệ thống vừa là giải pháp thực tế, vừa là môi trường học tập giàu giá trị cung cấp dữ liệu thật phục vụ nghiên cứu AI, NLP tiếng Việt và mô hình gợi ý.
 
 ### 3. Kiến trúc giải pháp  
-Nền tảng áp dụng kiến trúc AWS Serverless để quản lý dữ liệu từ 5 trạm dựa trên Raspberry Pi, có thể mở rộng lên 15 trạm. Dữ liệu được tiếp nhận qua AWS IoT Core, lưu trữ trong S3 data lake và xử lý bởi AWS Glue Crawlers và ETL jobs để chuyển đổi và tải vào một S3 bucket khác cho mục đích phân tích. Lambda và API Gateway xử lý bổ sung, trong khi Amplify với Next.js cung cấp bảng điều khiển được bảo mật bởi Cognito.  
+Nền tảng áp dụng kiến trúc AWS Serverless giúp vận hành ổn định, dễ mở rộng và tiết kiệm chi phí. Dữ liệu về người dùng, sân và lịch đặt được lưu trữ trong Amazon DynamoDB. Giao tiếp giữa các thành phần thông qua Amazon API Gateway và các hàm AWS Lambda. Giao diện web và di động được triển khai bằng AWS Amplify, trong khi Amazon Cognito đảm bảo kiểm soát truy cập an toàn. Amazon Personalize gợi ý sân dựa trên lịch sử người dùng và Amazon Comprehend cân nhắc sân dựa trên bình luận và sao đánh giá, Custom Dashboard sẽ trực quan hóa dữ liệu hoạt động cho chủ sân và người dùng. Tất cả hoạt động được giám sát qua Amazon CloudWatch và tự động hóa bằng Amazon EventBridge.  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
-
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+![Cloud Racket Platform Architecture](/images/2-Proposal/proposal_badminton.jpg)
 
 *Dịch vụ AWS sử dụng*  
-- *AWS IoT Core*: Tiếp nhận dữ liệu MQTT từ 5 trạm, mở rộng lên 15.  
-- *AWS Lambda*: Xử lý dữ liệu và kích hoạt Glue jobs (2 hàm).  
-- *Amazon API Gateway*: Giao tiếp với ứng dụng web.  
-- *Amazon S3*: Lưu trữ dữ liệu thô (data lake) và dữ liệu đã xử lý (2 bucket).  
-- *AWS Glue*: Crawlers lập chỉ mục dữ liệu, ETL jobs chuyển đổi và tải dữ liệu.  
-- *AWS Amplify*: Lưu trữ giao diện web Next.js.  
-- *Amazon Cognito*: Quản lý quyền truy cập cho người dùng phòng lab.  
-
-*Thiết kế thành phần*  
-- *Thiết bị biên*: Raspberry Pi thu thập và lọc dữ liệu cảm biến, gửi tới IoT Core.  
-- *Tiếp nhận dữ liệu*: AWS IoT Core nhận tin nhắn MQTT từ thiết bị biên.  
-- *Lưu trữ dữ liệu*: Dữ liệu thô lưu trong S3 data lake; dữ liệu đã xử lý lưu ở một S3 bucket khác.  
-- *Xử lý dữ liệu*: AWS Glue Crawlers lập chỉ mục dữ liệu; ETL jobs chuyển đổi để phân tích.  
-- *Giao diện web*: AWS Amplify lưu trữ ứng dụng Next.js cho bảng điều khiển và phân tích thời gian thực.  
-- *Quản lý người dùng*: Amazon Cognito giới hạn 5 tài khoản hoạt động.  
+- *AWS Amplify Hosting*: Lưu trữ và triển khai ứng dụng web/mobile.  
+- *Amazon API Gateway*: Giao tiếp giữa client và backend.  
+- *AWS Lambda*: Xử lý logic nghiệp vụ và kết nối các dịch vụ AWS.  
+- *Amazon DynamoDB*: Lưu trữ thông tin người dùng, sân và lịch đặt.  
+- *Amazon Cognito*: Xác thực và phân quyền người dùng.  
+- *Amazon SES*: Gửi email xác nhận và thông báo tự động.  
+- *Amazon S3*: Lưu trữ hình ảnh sân và dữ liệu phân tích.  
+- *Amazon Personalize*: Đưa ra gợi ý sân phù hợp cho người dùng.  
+- *Amazon Comprehend* (Optional): Phân tích cảm xúc trong bình luận tiếng Việt để bổ sung điểm đánh giá tổng hợp.  
+- *Amazon Location Service + DynamoDB GeoLib*: Tìm kiếm sân gần vị trí người dùng.  
+- *Custom Dashboard*: Trực quan hóa dữ liệu và phân tích báo cáo thông qua bảng điều khiển tùy chỉnh được xây dựng bằng AWS Amplify, AWS Lambda, và Chart.js từ dữ liệu lưu trong DynamoDB hoặc S3.  
+- *Amplify Admin UI (Admin Portal)*: Quản lý CRUD sân, duyệt bình luận, theo dõi logs.  
+- *Amplify CI/CD*: Tự động triển khai và cập nhật hệ thống.  
+- *Amazon CloudWatch*: Theo dõi log, hiệu suất và cảnh báo.  
+- *Amazon EventBridge (Scheduler)*: Tự động hóa lịch gửi thông báo và dọn dẹp dữ liệu.  
+- *AWS IAM + WAF*: Quản lý bảo mật, mã hóa dữ liệu và ngăn chặn tấn công web.  
+- *User Module*: Amazon Cognito quản lý đăng ký, đăng nhập và hồ sơ người dùng; dữ liệu người chơi, lịch sử đặt sân và sân yêu thích lưu trong DynamoDB.  
+- *Court Module*: Chủ sân thêm, chỉnh sửa thông tin và ảnh sân; dữ liệu sân lưu trong DynamoDB, hình ảnh trên S3; cập nhật trạng thái sân qua API Gateway + Lambda.  
+- *Booking Flow*: API Gateway → Lambda → DynamoDB → SES xử lý đặt sân, kiểm tra trùng lịch và gửi email xác nhận tự động.  
+- *Recommendation System*: Amazon Personalize phân tích hành vi và đánh giá người dùng để gợi ý sân; Lambda truy vấn kết quả gợi ý theo mô hình 70% hành vi + 30% rating.  
+- *Geo Search*: DynamoDB Geo Library hoặc Amazon Location Service tìm sân gần vị trí người chơi; tích hợp Google Maps hiển thị bản đồ và hướng đi.  
+- *Admin Dashboard*: Bảng điều khiển tùy chỉnh hiển thị doanh thu, lượt đặt và đánh giá, được xây dựng bằng AWS Amplify và Chart.js, với dữ liệu tổng hợp từ DynamoDB hoặc S3 thông qua AWS Lambda.  
+- *Automation Layer*: EventBridge kích hoạt Lambda định kỳ để gửi nhắc lịch, huấn luyện lại Personalize và dọn dữ liệu cũ.    
 
 ### 4. Triển khai kỹ thuật  
 *Các giai đoạn triển khai*  
-Dự án gồm 2 phần — thiết lập trạm thời tiết biên và xây dựng nền tảng thời tiết — mỗi phần trải qua 4 giai đoạn:  
-1. *Nghiên cứu và vẽ kiến trúc*: Nghiên cứu Raspberry Pi với cảm biến ESP32 và thiết kế kiến trúc AWS Serverless (1 tháng trước kỳ thực tập).  
-2. *Tính toán chi phí và kiểm tra tính khả thi*: Sử dụng AWS Pricing Calculator để ước tính và điều chỉnh (Tháng 1).  
-3. *Điều chỉnh kiến trúc để tối ưu chi phí/giải pháp*: Tinh chỉnh (ví dụ tối ưu Lambda với Next.js) để đảm bảo hiệu quả (Tháng 2).  
-4. *Phát triển, kiểm thử, triển khai*: Lập trình Raspberry Pi, AWS services với CDK/SDK và ứng dụng Next.js, sau đó kiểm thử và đưa vào vận hành (Tháng 2–3).  
+Dự án được chia thành 4 giai đoạn chính: 
+1. *Nghiên cứu và vẽ kiến trúc*: Lên sơ đồ hệ thống AWS Serverless, xác định quy trình đặt sân và luồng dữ liệu (Tuần 1).  
+2. *Phát triển và kiểm thử*: Xây dựng API Gateway + Lambda, tích hợp DynamoDB và Cognito, kiểm thử chức năng (Tuần 2-3).  
+3. *Phân tích*: Thêm gợi ý từ Personalize, hiển thị dữ liệu bằng Dashboard (Tuần 4).  
+4. *Triển khai và tối ưu*: Sử dụng Amplify CI/CD để triển khai tự động, thiết lập CloudWatch và EventBridge để giám sát (Tuần 5).  
 
 *Yêu cầu kỹ thuật*  
-- *Trạm thời tiết biên*: Cảm biến (nhiệt độ, độ ẩm, lượng mưa, tốc độ gió), vi điều khiển ESP32, Raspberry Pi làm thiết bị biên. Raspberry Pi chạy Raspbian, sử dụng Docker để lọc dữ liệu và gửi 1 MB/ngày/trạm qua MQTT qua Wi-Fi.  
-- *Nền tảng thời tiết*: Kiến thức thực tế về AWS Amplify (lưu trữ Next.js), Lambda (giảm thiểu do Next.js xử lý), AWS Glue (ETL), S3 (2 bucket), IoT Core (gateway và rules), và Cognito (5 người dùng). Sử dụng AWS CDK/SDK để lập trình (ví dụ IoT Core rules tới S3). Next.js giúp giảm tải Lambda cho ứng dụng web fullstack.  
+- *Frontend*: ReactJS / Next.js (AWS Amplify Hosting)  
+- *Backend*: AWS Lambda (Node.js hoặc Python) + Amazon API Gateway  
+- *Database*: Amazon DynamoDB (lưu người dùng, sân, lịch đặt, rating; hỗ trợ truy vấn Geo qua DynamoDB Geo Library hoặc AWS Location Service)  
+- *AI Integration*: Amazon Personalize (phân tích hành vi và đánh giá để gợi ý sân phù hợp)  
+- *Auth & Security*: Amazon Cognito (đăng nhập/xác thực), AWS IAM (phân quyền), AWS WAF (chống tấn công web)  
+- *Email*: Amazon SES (gửi xác nhận đặt sân, thông báo, nhắc lịch tự động)  
+- *Analytics*: Custom Dashboard (trực quan hóa doanh thu, lượt đặt và đánh giá từ dữ liệu DynamoDB hoặc S3, hiển thị qua AWS Amplify + Lambda + Chart.js)  
+- *Automation*: Amazon EventBridge (Scheduler) tự động hóa nhắc lịch, cập nhật dữ liệu gợi ý và dọn dẹp dữ liệu cũ  
+- *Maps API*: AWS Location Service hoặc Google Maps / Places / Distance Matrix (tìm sân gần, hiển thị bản đồ và chỉ đường)    
 
 ### 5. Lộ trình & Mốc triển khai  
-- *Trước thực tập (Tháng 0)*: 1 tháng lên kế hoạch và đánh giá trạm cũ.  
-- *Thực tập (Tháng 1–3)*:  
-    - Tháng 1: Học AWS và nâng cấp phần cứng.  
-    - Tháng 2: Thiết kế và điều chỉnh kiến trúc.  
-    - Tháng 3: Triển khai, kiểm thử, đưa vào sử dụng.  
-- *Sau triển khai*: Nghiên cứu thêm trong vòng 1 năm.  
+- *Thời lượng dự án*: 3 tháng (giai đoạn thực tập): Tháng 1 – Nghiên cứu & Chuẩn bị 
 
-### 6. Ước tính ngân sách  
-Có thể xem chi phí trên [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01)  
-Hoặc tải [tệp ước tính ngân sách](../attachments/budget_estimation.pdf).  
+- Nghiên cứu các dịch vụ AWS (Amplify, Lambda, DynamoDB, Personalize, SES, Location Service).
+
+- Thiết lập môi trường phát triển và cấu hình phần cứng. Tháng 2 – Thiết kế hệ thống & Kiến trúc
+
+- Thiết kế kiến trúc tổng thể và xác định các mô-đun chính.
+
+- Phát triển schema API, vai trò người dùng (Cognito), và pipeline CI/CD.
+
+- Chuẩn bị bộ dữ liệu mẫu cho Personalize và DynamoDB. Tháng 3 – Triển khai & Triển khai thực tế
+
+- Tuần 1: Hoàn thiện kiến trúc, định nghĩa schema DynamoDB, triển khai API Gateway + Lambda.
+
+- Tuần 2: Phát triển backend và frontend (ReactJS/Next.js + Amplify Hosting).
+
+- Tuần 3: Tích hợp Amazon Personalize, SES, và Location Service.
+
+- Tuần 4: Kiểm thử, tối ưu hiệu năng và triển khai hoàn chỉnh trên AWS Amplify.
+
+### 6. Ước tính ngân sách
 
 *Chi phí hạ tầng*  
-- AWS Lambda: 0,00 USD/tháng (1.000 request, 512 MB lưu trữ).  
-- S3 Standard: 0,15 USD/tháng (6 GB, 2.100 request, 1 GB quét).  
-- Truyền dữ liệu: 0,02 USD/tháng (1 GB vào, 1 GB ra).  
-- AWS Amplify: 0,35 USD/tháng (256 MB, request 500 ms).  
-- Amazon API Gateway: 0,01 USD/tháng (2.000 request).  
-- AWS Glue ETL Jobs: 0,02 USD/tháng (2 DPU).  
-- AWS Glue Crawlers: 0,07 USD/tháng (1 crawler).  
-- MQTT (IoT Core): 0,08 USD/tháng (5 thiết bị, 45.000 tin nhắn).  
+- AWS Amplify Hosting: Free Tier: 500 phút build, 5 GB phục vụ. Sau Free Tier: ~$0.01/phút × 500 = $5.00/tháng
+- AWS Lambda: $0.00/tháng (20,000 requests/ngày, 128 MB, trung bình 200 ms)
+- Amazon API Gateway: $0.00/tháng (600,000 requests/tháng, trong Free Tier)
+- Amazon DynamoDB: $0.00/tháng (5 GB dữ liệu, 100K đọc/ghi mỗi ngày)
+- Amazon S3 (Lưu ảnh): $0.12/tháng (10 GB lưu trữ, 5,000 GET/PUT requests)
+- Amazon SES (Email): $0.00/tháng (2,000 email/tháng trong Free Tier)
+- Amazon Personalize: Miễn phí 2 tháng đầu (20 GB dữ liệu, 5M interactions). Sau đó: ~$8.00/tháng với batch inference (dữ liệu nhỏ + huấn luyện hàng tuần).
+- Dashboard tùy chỉnh (Amplify + Chart.js): $0.00/tháng (sử dụng Amplify hiện có, dữ liệu từ S3/DynamoDB)
+- Amazon Location Service: $0.00/tháng (10,000 map requests, 1,000 location requests)
+- Amazon EventBridge (Scheduler): $0.00/tháng (10 quy tắc kích hoạt mỗi ngày/giờ)
+- AWS IAM + WAF: $0.00/tháng (xác thực, mã hóa và bảo mật cơ bản)  
 
-*Tổng*: 0,7 USD/tháng, 8,40 USD/12 tháng  
-- *Phần cứng*: 265 USD một lần (Raspberry Pi 5 và cảm biến).  
+*Tổng*: $0.7/tháng, $8.40/12 tháng  
+- *Tháng 1*: $0.12/tháng (tất cả trong Free Tier) 
+- *Tháng 2*: $5.12/tháng (Personalize vẫn trong Free Tier, Amplify bắt đầu tính phí)
+- *Sau khi hết Free Tier*: $13.12/tháng, ≈ $157.44/năm
 
 ### 7. Đánh giá rủi ro  
 *Ma trận rủi ro*  
-- Mất mạng: Ảnh hưởng trung bình, xác suất trung bình.  
-- Hỏng cảm biến: Ảnh hưởng cao, xác suất thấp.  
-- Vượt ngân sách: Ảnh hưởng trung bình, xác suất thấp.  
+- Mất kết nối Internet: Tác động trung bình, xác suất trung bình
+- Truy cập trái phép: Tác động cao, xác suất thấp
+- Vượt ngân sách: Tác động thấp, xác suất thấp
+- Lỗi gợi ý AI: Tác động trung bình, xác suất thấp  
 
 *Chiến lược giảm thiểu*  
-- Mạng: Lưu trữ cục bộ trên Raspberry Pi với Docker.  
-- Cảm biến: Kiểm tra định kỳ, dự phòng linh kiện.  
-- Chi phí: Cảnh báo ngân sách AWS, tối ưu dịch vụ.  
+- Mạng: Tự động thử lại khi mất kết nối
+- Bảo mật: Áp dụng MFA qua Cognito, WAF ngăn chặn tấn công
+- Chi phí: Cảnh báo qua AWS Budgets, tối ưu tần suất truy vấn
+- AI: Theo dõi và cập nhật mô hình Personalize định kỳ
 
 *Kế hoạch dự phòng*  
-- Quay lại thu thập thủ công nếu AWS gặp sự cố.  
-- Sử dụng CloudFormation để khôi phục cấu hình liên quan đến chi phí.  
+- Cho phép đặt sân tạm thời offline và đồng bộ khi có mạng
+- Rollback CodePipeline nếu có lỗi triển khai hoặc vượt chi phí
 
 ### 8. Kết quả kỳ vọng  
-*Cải tiến kỹ thuật*: Dữ liệu và phân tích thời gian thực thay thế quy trình thủ công. Có thể mở rộng tới 10–15 trạm.  
-*Giá trị dài hạn*: Nền tảng dữ liệu 1 năm cho nghiên cứu AI, có thể tái sử dụng cho các dự án tương lai.
+*Cải tiến kỹ thuật*: Ứng dụng cung cấp khả năng tìm kiếm và đặt sân theo thời gian thực, gợi ý cá nhân hóa và báo cáo trực quan giúp tối ưu hóa hoạt động cho cả người chơi và chủ sân.  
+*Giá trị dài hạn*: Nền tảng có thể mở rộng sang các môn thể thao khác (tennis, bóng rổ, phòng gym), đóng vai trò như một mẫu khung cho các giải pháp thể thao thông minh dựa trên AWS Serverless và AI. Ngoài ra, đây là dự án thực hành lý tưởng cho sinh viên hoặc nhóm nghiên cứu muốn ứng dụng AWS trong việc phát triển hệ thống thông minh.

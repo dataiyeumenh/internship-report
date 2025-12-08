@@ -10,116 +10,71 @@ pre: " <b> 4.2. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Báo cáo Workshop: “AI/ML/GenAI on AWS”
 
-### Mục Đích Của Sự Kiện
+**Ngày:** 15/11/2025    
+**Diễn giả:** Dinh Le Hoang Anh, Lam Tuan Kiet, Danh Hoang Hieu Nghi  
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+### Mục tiêu sự kiện
 
-### Danh Sách Diễn Giả
+- Giới thiệu các dịch vụ đám mây AWS và AI hiện đại.  
+- Khám phá khái niệm và ứng dụng của Foundation Models.  
+- Thực hành Amazon Bedrock để xây dựng ứng dụng AI.  
+- Khuyến khích học thực hành và thử nghiệm với công cụ AI trên AWS.  
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Diễn giả & Chủ đề
 
-### Nội Dung Nổi Bật
+- **Dinh Le Hoang Anh** – Tổng quan các dịch vụ AWS Cloud  
+- **Lam Tuan Kiet** – Giới thiệu Foundation Models  
+- **Danh Hoang Hieu Nghi** – Khám phá Amazon Bedrock & phát triển ứng dụng AI  
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+### Nội dung nổi bật
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+#### Các dịch vụ AWS Cloud (Dinh Le Hoang Anh)
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+- Tổng quan về các dịch vụ cốt lõi: EC2, S3, Lambda, RDS, ECS, Fargate.  
+- Best practices cho kiến trúc đám mây, bảo mật và tối ưu chi phí.  
+- Demo triển khai ứng dụng web đơn giản bằng dịch vụ quản lý của AWS.  
+- Nhấn mạnh khả năng mở rộng, độ tin cậy và tự động hóa.  
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### Foundation Models (Lam Tuan Kiet)
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- Định nghĩa và tầm quan trọng của Foundation Models trong AI.  
+- Các ứng dụng: tạo văn bản, tóm tắt, hỗ trợ code, embeddings.  
+- So sánh với mô hình ML truyền thống: quy mô, khả năng tổng quát, transfer learning.  
+- Ví dụ thực hành: fine-tuning mô hình ngôn ngữ pre-trained cho tác vụ chuyên ngành.  
 
-#### Domain-Driven Design (DDD)
+#### Amazon Bedrock (Danh Hoang Hieu Nghi)
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+- Giới thiệu Amazon Bedrock: dịch vụ quản lý hoàn toàn để xây dựng ứng dụng AI mà không quản lý hạ tầng.  
+- Demo tạo chatbot và dịch vụ tóm tắt văn bản bằng Foundation Models qua Bedrock.  
+- Thảo luận về tích hợp với các dịch vụ AWS khác và pipelines.  
+- Lợi ích: triển khai nhanh, mở rộng dễ dàng, chi phí theo pay-as-you-go, lựa chọn mô hình dễ dàng.  
 
-#### Event-Driven Architecture
+### Bài học rút ra
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+#### Tư duy thiết kế & chiến lược
 
-#### Compute Evolution
+- AI-first approach: tích hợp AI từ giai đoạn thiết kế giải pháp ban đầu.  
+- Foundation models giúp tăng tốc phát triển nhờ kiến thức pre-trained.  
+- Nhấn mạnh thử nghiệm liên tục: iterate, test và refine ứng dụng AI nhanh chóng.  
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### Kiến trúc kỹ thuật
 
-#### Amazon Q Developer
+- Foundation models bổ sung cho các dịch vụ cloud-native như thế nào.  
+- Khám phá pattern serverless và kiến trúc API-driven với Bedrock.  
+- Tự động hóa triển khai và mở rộng dịch vụ AI theo best practices của AWS.  
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+#### Ứng dụng thực tế
 
-### Những Gì Học Được
+- Xây dựng prototype bằng Amazon Bedrock cho nội bộ hoặc khách hàng.  
+- Tích hợp foundation models cho tóm tắt văn bản, Q&A, tạo nội dung.  
+- Đánh giá ROI dựa trên thời gian tiết kiệm và năng suất cải thiện.  
 
-#### Tư Duy Thiết Kế
+### Trải nghiệm sự kiện
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- Demo trực tiếp từ các diễn giả giúp hiểu rõ các khái niệm phức tạp.  
+- Cơ hội đặt câu hỏi về các ứng dụng thực tế của AWS và AI.  
+- Kết nối với các đồng nghiệp và diễn giả giúp hiểu rõ AI trong môi trường đám mây.  
 
-#### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+> Tổng thể, workshop cung cấp cái nhìn toàn diện về các dịch vụ AWS, Foundation Models và Amazon Bedrock, nhấn mạnh kỹ năng thực hành, thử nghiệm và phát triển ứng dụng AI trên cloud.

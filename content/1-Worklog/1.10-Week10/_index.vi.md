@@ -1,7 +1,7 @@
 ---
 title: "Worklog Tuần 10"
 date: "`r Sys.Date()`"
-weight: 2
+weight: 1
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
@@ -12,48 +12,27 @@ pre: " <b> 1.10. </b> "
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hoàn thiện lựa chọn dịch vụ và tối ưu chi phí cho dự án cuối kỳ.
+* Ôn tập code back-end và nâng cao kỹ năng front-end với React.
+* Học lại và thực hành về JWT, Authentication, Authorization.
+* Tạo và quản lý dataset trên DynamoDB, cấu hình AWS CLI để thao tác với cơ sở dữ liệu.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                     | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ------------------------------------------------------------------------------------------------------------ | ------------ | --------------- | -------------- |
+| 2   | - Chốt lại các dịch vụ sẽ sử dụng cùng với teammates <br> - Vẫn tiếp tục xem dịch vụ và tối ưu chi phí       | 10/11/2025   | 10/11/2025      |                |
+| 3   | - Ôn code và học React                                                                                       | 11/11/2025   | 11/11/2025      |                |
+| 4   | - Học lại JWT, Authentication, Authorization <br> - Tạo database mẫu để test API                             | 12/11/2025   | 12/11/2025      |                |
+| 5   | - Tạo dataset                                                                                                | 13/11/2025   | 13/11/2025      |                |
+| 6   | - Đẩy dataset lên DynamoDB <br> - Set up AWS CLI, `aws configure` để tương tác với DynamoDB                  | 14/11/2025   | 14/11/2025      |                |
 
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hoàn thiện việc chọn dịch vụ và tối ưu chi phí cho dự án cuối kỳ.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Ôn tập và củng cố kỹ năng lập trình back-end, nâng cao kỹ năng React.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Hiểu rõ và thực hành JWT, Authentication, Authorization.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Tạo, quản lý dataset trên DynamoDB và thao tác cơ sở dữ liệu thông qua AWS CLI.

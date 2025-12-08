@@ -9,118 +9,119 @@ pre: " <b> 3.1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Giám sát sức khỏe server với Amazon GameLift Servers
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+**Tác giả:** Brian Schuster | **Ngày:** 20 NOV 2025 | **Chuyên mục:** Amazon GameLift, Amazon Managed Grafana, Phát triển game, Game, Công cụ quản lý
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
+Chạy một trò chơi đa người chơi thành công đồng nghĩa với việc bạn phải liên tục cân bằng hiệu suất, khả năng mở rộng và trải nghiệm người chơi. Khi lượng người chơi tăng, những thách thức mới xuất hiện. Nguyên nhân có thể đến từ nhiều vấn đề khác nhau: có thể là trong mã server của bạn. Có thể là rò rỉ bộ nhớ, logic không hiệu quả, hoặc một lỗi chỉ xuất hiện trong điều kiện cụ thể.
 
----
+Ngoài ra, việc tối ưu độ trễ bằng Amazon GameLift Servers cũng quan trọng, bằng cách phân bổ chiến lược năng lực qua các khu vực, đảm bảo người chơi kết nối với server gần họ nhất. Tuy nhiên, ngay cả khi đã tối ưu độ trễ, bạn vẫn có thể nhận được phản hồi về hiệu suất kém hoặc trải nghiệm chơi giảm sút từ một số người chơi.
 
-## Hướng dẫn kiến trúc
+Chúng tôi đã đề cập trước đó cách chẩn đoán và giải quyết các vấn đề mạng rộng, nhưng các chỉ số độ trễ đơn thuần sẽ không cho bạn toàn bộ bức tranh. Bạn cần có cái nhìn sâu hơn về những gì đang xảy ra trên server game của bạn.
 
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
+### Quan sát phía server: vượt ra ngoài độ trễ
 
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
+Khi sử dụng Amazon GameLift Servers với telemetry được bật, server game của bạn sẽ thu thập nhiều chỉ số chi tiết — bao gồm sử dụng tài nguyên (CPU, bộ nhớ, mạng), các chỉ số game-specific (như tick rate), và các chỉ số tùy chỉnh bạn định nghĩa. Các chỉ số này được ghi lại với các cấp độ khác nhau để bạn có thể phân tích hiệu suất ở mức process, container, host, hoặc toàn bộ fleet. Chúng có thể được đẩy vào hệ thống lưu trữ chỉ số của bạn và hiển thị bằng các công cụ bạn chọn.
 
-**Kiến trúc giải pháp bây giờ như sau:**
+Chúng tôi sẽ minh họa sử dụng **Amazon Managed Grafana** với các dashboard dựng sẵn. Việc thiết lập được tối ưu và có thể hoàn tất trong chưa đến một giờ.
 
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
-
----
-
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
-
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Sức mạnh thực sự không chỉ nằm ở các chỉ số, mà còn ở cách các dashboard giúp bạn nhanh chóng xác định và chẩn đoán vấn đề.
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+### Khắc phục sự cố server game bị crash
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Tình huống phổ biến: phiên game bị crash, người chơi bị ngắt kết nối giữa trận, bạn cần tìm nguyên nhân.
 
----
+Nếu bạn chưa thiết lập dashboard giám sát, hãy làm theo hướng dẫn **Configure Amazon Grafana** — mất vài phút để provision dashboard dựng sẵn cho fleet. Lưu ý chúng tôi đang theo các bước SDK C++, điều chỉnh cho tùy chọn triển khai của bạn.
 
-## The pub/sub hub
+Sau khi cấu hình xong, mở Amazon Managed Grafana từ AWS Management Console và đi đến **EC2 Fleet Overview dashboard**. Hình 1 hiển thị sự kiện crash trong biểu đồ Game Server Crashes, trong khi phần **Crashed Game Sessions** hiển thị chi tiết phiên game bị crash. Cả instance và phiên game bị crash đều có liên kết, giúp điều tra sâu hơn.
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+![EC2 Fleet Overview dashboard showing a crashed Game Session.](/images/3-BlogsTranslated/1.png)
+**Hình 1:** Dashboard EC2 Fleet Overview hiển thị phiên game bị crash.
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Chọn instance bị ảnh hưởng. Biểu đồ bộ nhớ (Hình 2) cho thấy bộ nhớ tăng đột ngột, rồi giảm khi process crash — đặc trưng của rò rỉ bộ nhớ. Xem chi tiết theo phiên game, bạn sẽ thấy một phiên sử dụng bộ nhớ nhiều hơn đáng kể.
 
----
+![Instance Performance dashboard showing memory leak.](/images/3-BlogsTranslated/2.png)
+**Hình 2:** Dashboard Instance Performance hiển thị rò rỉ bộ nhớ.
 
-## Core microservice
+Nhấn vào phiên game bị crash để xem **Server Performance dashboard** (Hình 3), hiển thị mức tiêu thụ tài nguyên của phiên đến lúc crash. Dashboard cho thấy phiên game này là nguyên nhân rò rỉ bộ nhớ.
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+![Server Performance dashboard showing memory leak.](/images/3-BlogsTranslated/3.png)
+**Hình 3:** Dashboard Server Performance hiển thị rò rỉ bộ nhớ.
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+Mỗi biểu đồ đều có tooltip hướng dẫn cách đọc và giải thích dữ liệu. Bước tiếp theo rõ ràng: kiểm tra logs của phiên game bị crash để xác định nguyên nhân, có thể do chế độ chơi cụ thể hoặc hành động của người chơi. Các chỉ số giúp bạn xác định logs cần kiểm tra.
 
 ---
 
-## Front door microservice
+### Khắc phục tình trạng CPU cao
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Tình huống khác: người chơi phản ánh game bị giật lag nhưng không crash. Nguyên nhân có thể liên quan CPU.
 
----
+Chuyển đến **EC2 Instances Overview dashboard** trong Amazon Managed Grafana. Hình 4 hiển thị 20 instance EC2 tiêu thụ CPU cao nhất. Phần lớn giữ ở 2–3% CPU, nhưng vài instance lên 20–30% hoặc cao hơn.
 
-## Staging ER7 microservice
+![EC2 Instances Overview dashboard.](/images/3-BlogsTranslated/4.png)
+**Hình 4:** Dashboard EC2 Instances Overview
 
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Chọn một instance CPU cao. Dashboard phân tách CPU theo phiên game (Hình 5), chỉ ra ngay phiên nào tiêu thụ nhiều tài nguyên nhất. Bạn có thể xem logs phiên game đó, tập trung vào thời điểm CPU tăng cao.
+
+![Instance Performance dashboard showing top CPU consuming game sessions.](/images/3-BlogsTranslated/5.png)
+**Hình 5:** Dashboard Instance Performance hiển thị các phiên game tiêu thụ CPU cao.
+
+Có thể bạn nhận thấy CPU cao liên quan đến kịch bản chiến đấu căng thẳng, hoặc lỗi pathfinding khiến tính toán quá mức. Chỉ số không nói chính xác lỗi, nhưng chỉ ra nơi cần kiểm tra.
 
 ---
 
-## Tính năng mới trong giải pháp
+### Hỗ trợ container
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Nếu chạy fleet GameLift Servers bằng container thay vì EC2, cách khắc phục tương tự áp dụng. Hình 6 là **Container Fleet Overview dashboard**, hiển thị task tiêu thụ CPU hoặc memory cao nhất.
+
+![Container Fleet Overview dashboard.](/images/3-BlogsTranslated/6.png)
+**Hình 6:** Container Fleet Overview dashboard
+
+Nhấn vào task cụ thể, dashboard **Container Performance** (Hình 7) phân tách theo container. Bạn có thể xem container server game có tiêu thụ đúng hay không, hoặc container phụ gây vấn đề. Chi tiết này giúp nhanh chóng cô lập vấn đề, dù chạy EC2 hay container.
+
+![Container Performance dashboard.](/images/3-BlogsTranslated/7.png)
+**Hình 7:** Container Performance dashboard
+
+---
+
+### Bước tiếp theo
+
+Ngoài các chỉ số phần cứng và game cơ bản (tick rate, crashes), bạn có thể mở rộng giám sát bằng **custom metrics**.
+
+Ví dụ các chỉ số game-specific:
+
+- **Cân bằng chiến đấu:** Thời gian giết trung bình hoặc DPS theo loại vũ khí, phát hiện patch làm vũ khí quá mạnh.  
+- **Khóa tiến trình:** Tỷ lệ thành công nhiệm vụ quan trọng hoặc boss để phát hiện lỗi ngăn người chơi tiến triển.  
+- **Sức khỏe kinh tế:** Lạm phát tiền tệ hoặc pattern nhận vật phẩm để phát hiện exploit.  
+- **Thời gian pathfinding AI:** Thời gian tính đường NPC để phát hiện kịch bản phức tạp gây lag.
+
+Sau khi thiết lập custom metrics, tạo alert trong Amazon Managed Grafana cho cả hệ thống và game-specific. Ví dụ:
+
+- Memory > 90%  
+- CPU > 85% kéo dài  
+- Tăng phiên crash  
+- Spike trong custom metrics (như thất bại boss)
+
+Khi alert kích hoạt, nhấp vào dashboard liên quan và bắt đầu điều tra — phát hiện lỗi trước khi người chơi phản ánh.
+
+---
+
+### Kết luận
+
+Tối ưu độ trễ giúp kết nối người chơi đến vị trí đúng, nhưng **server-side observability** đảm bảo trải nghiệm mượt mà. Telemetry của GameLift Servers với dashboard dựng sẵn giúp chẩn đoán crash, bottleneck, và vấn đề tài nguyên nhanh chóng — mà không bị ngập trong raw metrics.
+
+Lần tới khi người chơi phàn nàn lỗi game, bạn sẽ biết chính xác nơi cần kiểm tra, và với alert chủ động, bạn sẽ bắt lỗi trước khi họ nhận ra.
+
+**Liên hệ AWS Representative** để biết cách tăng tốc doanh nghiệp của bạn.
+
+---
+
+**Đọc thêm:**
+
+- [Getting started with Amazon GameLift Servers](https://aws.amazon.com/gamelift/getting-started/)  
+- [Setting up alerts in Amazon Managed Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/AMG.html)  
+- [Available Amazon GameLift Servers dashboards and metrics](https://docs.aws.amazon.com/gamelift/latest/developerguide/metrics-dashboards.html)  
+
+**Tác giả:** Brian Schuster, Principal Engineer tại AWS cho Amazon GameLift.

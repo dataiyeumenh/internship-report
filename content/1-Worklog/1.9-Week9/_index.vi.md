@@ -12,48 +12,29 @@ pre: " <b> 1.9. </b> "
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hỗ trợ nhóm hoàn thiện proposal.
+* Nghiên cứu và lựa chọn các dịch vụ phù hợp cho dự án cuối kỳ, tối ưu chi phí.
+* Ôn tập code back-end và nâng cao kỹ năng front-end với React.
+* Hoàn thiện sơ đồ kiến trúc dự án nhóm.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc                                                                                                           | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ------------------------------------------------------------------------------------------------------------------ | ------------ | --------------- | -------------- |
+| 2   | - Hỗ trợ teammates làm proposal <br> - Nghiên cứu các dịch vụ sẽ dùng cho dự án cuối kỳ                               | 03/11/2025   | 03/11/2025      |                |
+| 3   | - Tiếp tục nghiên cứu các dịch vụ sẽ dùng cho dự án cuối kỳ để tối ưu chi phí <br> - Học cách prompt chuẩn cho AI | 04/11/2025   | 04/11/2025      |                |
+| 4   | - Xem lại cách vẽ architecture để hoàn thiện và sửa đổi bổ sung sơ đồ architecture của nhóm                        | 05/11/2025   | 05/11/2025      |                |
+| 5   | - Tiếp tục ôn lại code back-end để chuẩn bị bước vào code dự án <br> - Học kỹ hơn về React                           | 06/11/2025   | 06/11/2025      |                |
+| 6   | - Coi lại các dịch vụ, ôn code và tiếp tục học React                                                                | 07/11/2025   | 07/11/2025      |                |
 
 
 ### Kết quả đạt được tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+* Hỗ trợ nhóm hoàn thiện proposal và lập kế hoạch cho dự án cuối kỳ.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+* Nắm rõ các dịch vụ AWS/AI cần dùng cho dự án, tối ưu chi phí.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+* Ôn tập và củng cố kỹ năng code back-end.
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+* Nâng cao kỹ năng front-end với React.
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+* Hoàn thiện sơ đồ kiến trúc dự án nhóm.

@@ -28,12 +28,12 @@ Typically, and as a standard, a worklog is carried out over about 3 months (thro
 
 **Week 7:** [Advanced AWS Practice and Lab Knowledge Consolidation](1.7-week7/)
 
-**Week 8:** [Doing task H...](1.8-week8/)
+**Week 8:** [Reviewing Learned Knowledge and Midterm Preparation](1.8-week8/)
 
-**Week 9:** [Doing task I...](1.9-week9/)
+**Week 9:** [Final Project Preparation and Back-End/React Review](1.9-week9/)
 
-**Week 10:** [Doing task L...](1.10-week10/)
+**Week 10:** [Backend Implementation, Dataset Creation, and DynamoDB Setup](1.10-week10/)
 
-**Week 11:** [Doing task M...](1.11-week11/)
+**Week 11:** [Writing APIs and Updating DynamoDB for Final Project](1.11-week11/)
 
-**Week 12:** [Doing task N...](1.12-week12/)
+**Week 12:** [Writing APIs and Updating DynamoDB for Final Project](1.12-week12/)

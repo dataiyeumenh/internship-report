@@ -6,110 +6,132 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
+⚠️ **Note:** The information below is for reference only. Please **do not copy it verbatim** for your report, including this warning.
 {{% /notice %}}
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+In this section, you need to summarize the contents of the workshop that you **intend** to conduct.
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+# Cloud Racket Platform
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+### 1. Executive Summary  
+The Badminton Court Finder Platform is designed to help badminton players in Ho Chi Minh City easily search for courts, book them, and manage schedules in real-time. The application is built entirely on a serverless AWS architecture, integrating technologies such as personalized AI recommendations, sentiment analysis of user reviews, and mapping of nearby courts via Google API, while also supporting monthly revenue statistics for court owners.
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+### 2. Problem Statement  
+*Current Problem*  
+Currently, finding and booking badminton courts mainly relies on manual contact (phone or social media). Court schedules are not updated in real-time and court coverage is limited, making it difficult to estimate travel distance. Court owners also face challenges managing the number of courts and revenue reporting inefficiently.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+*Solution*  
+This website provides an automated process for searching, booking, and efficient management for business owners. Users can search for courts near their location via Amazon Location Service, view real-time court availability in Amazon DynamoDB, and receive personalized court recommendations through Amazon Personalize. Court owners can register and update court information, receive booking confirmation emails via Amazon SES, and view revenue statistics through a Custom Dashboard built with AWS Amplify, Lambda, and Chart.js using data from DynamoDB/S3. The web interface is deployed via AWS Amplify, and user management is handled through Amazon Cognito.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+*Benefits and ROI*  
+  * **For players:** Easily find and book suitable courts within seconds, receive personalized recommendations based on behavior and location, and automatically receive confirmation emails. Search time is reduced by 90% (from 30 minutes to 3 minutes), and booking confirmation time is shortened from 2–24 hours to only 5 minutes.  
+  * **For court owners:** Automatically manage courts, schedules, and bookings via a central dashboard, reducing manual operations by 80%. The system provides visual reports of revenue, bookings, and average ratings to support data-driven decision making.  
+  * **For the development team:** Fully serverless system, extremely low operating cost (<$1/month in the initial phase, estimated $8–15/month after Free Tier). The system is both a practical solution and a valuable learning environment providing real data for AI, Vietnamese NLP, and recommendation model research.
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+### 3. Solution Architecture  
+The platform uses a serverless AWS architecture for stable operation, easy scalability, and cost efficiency. Data about users, courts, and bookings is stored in Amazon DynamoDB. Components communicate via Amazon API Gateway and AWS Lambda functions. The web and mobile interface is deployed via AWS Amplify, while Amazon Cognito ensures secure access control. Amazon Personalize recommends courts based on user history and Amazon Comprehend considers reviews and ratings, while the Custom Dashboard visualizes activity data for court owners and users. All operations are monitored via Amazon CloudWatch and automated with Amazon EventBridge.  
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+![Cloud Racket Platform Architecture](/images/2-Proposal/proposal_badminton.jpg)
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+*AWS Services Used*  
+- *AWS Amplify Hosting*: Host and deploy web/mobile applications.  
+- *Amazon API Gateway*: Communication between client and backend.  
+- *AWS Lambda*: Handle business logic and connect AWS services.  
+- *Amazon DynamoDB*: Store user, court, and booking information.  
+- *Amazon Cognito*: Authenticate and authorize users.  
+- *Amazon SES*: Send confirmation emails and notifications automatically.  
+- *Amazon S3*: Store court images and analytical data.  
+- *Amazon Personalize*: Provide personalized court recommendations.  
+- *Amazon Comprehend* (Optional): Analyze sentiment in Vietnamese reviews to supplement overall ratings.  
+- *Amazon Location Service + DynamoDB GeoLib*: Find courts near the user’s location.  
+- *Custom Dashboard*: Visualize data and analyze reports via a custom dashboard built with AWS Amplify, AWS Lambda, and Chart.js from data stored in DynamoDB or S3.  
+- *Amplify Admin UI (Admin Portal)*: Manage CRUD operations for courts, moderate reviews, and monitor logs.  
+- *Amplify CI/CD*: Automatically deploy and update the system.  
+- *Amazon CloudWatch*: Monitor logs, performance, and alerts.  
+- *Amazon EventBridge (Scheduler)*: Automate notifications and clean up data.  
+- *AWS IAM + WAF*: Manage security, encrypt data, and prevent web attacks.  
+- *User Module*: Amazon Cognito manages registration, login, and user profiles; player data, booking history, and favorite courts are stored in DynamoDB.  
+- *Court Module*: Court owners add or edit court information and images; court data is stored in DynamoDB, images in S3; status updates handled via API Gateway + Lambda.  
+- *Booking Flow*: API Gateway → Lambda → DynamoDB → SES handles bookings, checks for conflicts, and sends automatic confirmation emails.  
+- *Recommendation System*: Amazon Personalize analyzes user behavior and ratings to provide court recommendations; Lambda queries results based on 70% behavior + 30% rating model.  
+- *Geo Search*: DynamoDB Geo Library or Amazon Location Service finds courts near the player; integrates Google Maps for navigation.  
+- *Admin Dashboard*: Custom dashboard shows revenue, bookings, and ratings, built with AWS Amplify and Chart.js using aggregated data from DynamoDB or S3 via AWS Lambda.  
+- *Automation Layer*: EventBridge triggers Lambda periodically to send reminders, retrain Personalize, and clean up old data.  
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+### 4. Technical Implementation  
+*Project Phases*  
+The project is divided into 4 main phases:  
+1. *Research & Architecture*: Draw AWS Serverless system diagram, define booking workflow and data flow (Week 1).  
+2. *Development & Testing*: Build API Gateway + Lambda, integrate DynamoDB and Cognito, perform functional testing (Weeks 2–3).  
+3. *Analysis*: Add recommendations from Personalize, display data via Dashboard (Week 4).  
+4. *Deployment & Optimization*: Use Amplify CI/CD for automated deployment, set up CloudWatch and EventBridge for monitoring (Week 5).  
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+*Technical Requirements*  
+- *Frontend*: ReactJS / Next.js (AWS Amplify Hosting)  
+- *Backend*: AWS Lambda (Node.js or Python) + Amazon API Gateway  
+- *Database*: Amazon DynamoDB (store users, courts, bookings, ratings; supports Geo queries via DynamoDB Geo Library or AWS Location Service)  
+- *AI Integration*: Amazon Personalize (analyze behavior and ratings to recommend courts)  
+- *Auth & Security*: Amazon Cognito (login/authentication), AWS IAM (permissions), AWS WAF (web attack protection)  
+- *Email*: Amazon SES (booking confirmation, notifications, automatic reminders)  
+- *Analytics*: Custom Dashboard (visualize revenue, bookings, ratings from DynamoDB or S3 via AWS Amplify + Lambda + Chart.js)  
+- *Automation*: Amazon EventBridge (Scheduler) automates reminders, updates recommendations, cleans old data  
+- *Maps API*: AWS Location Service or Google Maps / Places / Distance Matrix (find nearby courts, show maps and directions)  
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+### 5. Timeline & Milestones  
+- *Project Duration*: 3 months (internship phase)  
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+- **Month 1 – Research & Preparation**  
+  - Research AWS services (Amplify, Lambda, DynamoDB, Personalize, SES, Location Service)  
+  - Set up development environment and hardware  
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
+- **Month 2 – System Design & Architecture**  
+  - Design overall architecture and define main modules  
+  - Develop API schemas, user roles (Cognito), and CI/CD pipeline  
+  - Prepare sample datasets for Personalize and DynamoDB  
 
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
+- **Month 3 – Implementation & Deployment**  
+  - Week 1: Finalize architecture, define DynamoDB schema, deploy API Gateway + Lambda  
+  - Week 2: Develop backend and frontend (ReactJS/Next.js + Amplify Hosting)  
+  - Week 3: Integrate Amazon Personalize, SES, and Location Service  
+  - Week 4: Test, optimize performance, and fully deploy on AWS Amplify  
 
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
+### 6. Budget Estimation  
 
-Total: $0.7/month, $8.40/12 months
+*Infrastructure Costs*  
+- AWS Amplify Hosting: Free Tier: 500 build minutes, 5 GB hosting. After Free Tier: ~$0.01/min × 500 = $5.00/month  
+- AWS Lambda: $0.00/month (20,000 requests/day, 128 MB, avg 200 ms)  
+- Amazon API Gateway: $0.00/month (600,000 requests/month within Free Tier)  
+- Amazon DynamoDB: $0.00/month (5 GB data, 100K read/write per day)  
+- Amazon S3 (Images): $0.12/month (10 GB storage, 5,000 GET/PUT requests)  
+- Amazon SES (Email): $0.00/month (2,000 emails/month Free Tier)  
+- Amazon Personalize: Free 2 months (20 GB data, 5M interactions). After that: ~$8/month for batch inference (small data + weekly retraining)  
+- Custom Dashboard (Amplify + Chart.js): $0.00/month  
+- Amazon Location Service: $0.00/month (10,000 map requests, 1,000 location requests)  
+- Amazon EventBridge (Scheduler): $0.00/month (10 rules triggers/day/hour)  
+- AWS IAM + WAF: $0.00/month (basic auth, encryption, security)  
 
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
+*Total*: $0.7/month, $8.40/12 months  
+- Month 1: $0.12/month (all within Free Tier)  
+- Month 2: $5.12/month (Personalize still Free Tier, Amplify starts charging)  
+- After Free Tier: $13.12/month ≈ $157.44/year  
 
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
+### 7. Risk Assessment  
+*Risk Matrix*  
+- Internet outage: Medium impact, medium probability  
+- Unauthorized access: High impact, low probability  
+- Budget overrun: Low impact, low probability  
+- AI recommendation errors: Medium impact, low probability  
 
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
+*Mitigation Strategies*  
+- Network: Auto retry when connection lost  
+- Security: MFA via Cognito, WAF blocks attacks  
+- Costs: Alerts via AWS Budgets, optimize query frequency  
+- AI: Monitor and periodically retrain Personalize model  
 
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
+*Contingency Plan*  
+- Allow temporary offline bookings and sync when network is available  
+- Rollback CodePipeline if deployment fails or costs exceed estimates  
 
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 8. Expected Outcomes  
+*Technical Improvement*: The application provides real-time court search and booking, personalized recommendations, and visual reports to optimize operations for players and court owners.  
+*Long-term Value*: The platform can expand to other sports (tennis, basketball, gyms) and serve as a blueprint for smart sports solutions using AWS Serverless and AI. It is also an ideal practical project for students or research teams applying AWS to develop intelligent systems.

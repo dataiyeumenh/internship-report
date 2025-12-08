@@ -9,118 +9,119 @@ pre: " <b> 3.1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Monitoring Server Health with Amazon GameLift Servers
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+**Author:** Brian Schuster | **Date:** 20 NOV 2025 | **Category:** Amazon GameLift, Amazon Managed Grafana, Game Development, Games, Management Tools
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
+Running a successful multiplayer game means constantly balancing performance, scalability, and player experience. As the player base grows, new challenges emerge. The causes could stem from various issues: perhaps something in your server code. There could be a memory leak, inefficient logic, or a bug that only surfaces under specific conditions.
 
----
+Additionally, optimizing latency using Amazon GameLift Servers is important, by strategically allocating capacity across regions to ensure players connect to servers closest to them. However, even with latency optimizations in place, you may still receive feedback about poor performance or degraded gameplay from a subset of players.
 
-## Architecture Guidance
+We have previously discussed how to diagnose and address broader network issues, but latency metrics alone won’t provide the full picture. You need deeper visibility into what is happening on your game servers.
 
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
+### Server-side observability: beyond latency
 
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
+When using Amazon GameLift Servers with telemetry enabled, your game servers collect a variety of detailed metrics — including resource utilization (CPU, memory, network), game-specific metrics (such as tick rate), and custom metrics you define. These metrics are captured at different levels so you can analyze performance at the process, container, host, or fleet-wide level. They can be sent to your chosen metrics storage and visualized with your preferred tools.
 
-**The solution architecture is now as follows:**
+We will demonstrate using **Amazon Managed Grafana** with pre-built dashboards. The setup is streamlined and can be completed in under an hour.
 
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
-
----
-
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
-
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+The real power lies not only in the metrics themselves but also in how the dashboards help you quickly identify and diagnose issues.
 
 ---
 
-## Technology Choices and Communication Scope
+### Troubleshooting game server crashes
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+A common scenario: game sessions are crashing, players are disconnected mid-match, and you need to determine why.
 
----
+If you haven’t already set up monitoring dashboards, follow the **Configure Amazon Grafana** guide — it takes a few minutes to provision pre-built dashboards for your fleet. Note that we are following the C++ SDK steps, adjust for your chosen implementation.
 
-## The Pub/Sub Hub
+Once configured, open Amazon Managed Grafana from the AWS Management Console and navigate to the **EC2 Fleet Overview dashboard**. Figure 1 shows a crash event in the Game Server Crashes graph, while the **Crashed Game Sessions** section displays details of the specific crashed game session. Both the instance and the crashed session are linked for deeper investigation.
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+![EC2 Fleet Overview dashboard showing a crashed Game Session.](/images/3-BlogsTranslated/1.png)
+**Figure 1:** EC2 Fleet Overview dashboard showing a crashed game session.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+Select the affected instance. The memory graph (Figure 2) shows memory spiked sharply, then dropped as the process crashed — a signature of a memory leak. Looking at session-level details, you can see one session used significantly more memory.
 
----
+![Instance Performance dashboard showing memory leak.](/images/3-BlogsTranslated/2.png)
+**Figure 2:** Instance Performance dashboard showing memory leak.
 
-## Core Microservice
+Clicking on the crashed game session opens the **Server Performance dashboard** (Figure 3), showing the session’s resource usage up to the moment of crash. The dashboard indicates this session was responsible for the memory leak.
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+![Server Performance dashboard showing memory leak.](/images/3-BlogsTranslated/3.png)
+**Figure 3:** Server Performance dashboard showing memory leak.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+Each graph includes tooltips explaining what to look for and how to interpret the data. The next step is clear: investigate the logs of the crashed session to identify the trigger, whether from a specific game mode or a player’s action. Metrics guide you to the right logs.
 
 ---
 
-## Front Door Microservice
+### Troubleshooting high CPU usage
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+Another scenario: players report stuttering gameplay but no crashes. The issue might be CPU-related.
 
----
+Switch to the **EC2 Instances Overview dashboard** in Amazon Managed Grafana. Figure 4 shows the top 20 EC2 instances by CPU consumption. Most hover around 2–3% CPU, but a few reach 20–30% or higher.
 
-## Staging ER7 Microservice
+![EC2 Instances Overview dashboard.](/images/3-BlogsTranslated/4.png)
+**Figure 4:** EC2 Instances Overview dashboard
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+Select a high-CPU instance. The dashboard breaks down CPU by game session (Figure 5), immediately showing which session is consuming the most resources. You can then review logs for that session, focusing on periods of elevated CPU usage.
+
+![Instance Performance dashboard showing top CPU consuming game sessions.](/images/3-BlogsTranslated/5.png)
+**Figure 5:** Instance Performance dashboard showing top CPU-consuming game sessions.
+
+You may find high CPU correlates with intense combat scenarios or a pathfinding bug causing excessive calculations. Metrics alone don’t tell you exactly what’s wrong, but they indicate where to look.
 
 ---
 
-## New Features in the Solution
+### Container support
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+If running your GameLift Servers Fleet with containers instead of EC2, the same troubleshooting approach applies. Figure 6 is the **Container Fleet Overview dashboard**, showing tasks with high CPU or memory usage.
+
+![Container Fleet Overview dashboard.](/images/3-BlogsTranslated/6.png)
+**Figure 6:** Container Fleet Overview dashboard
+
+Click a specific task, and the **Container Performance dashboard** (Figure 7) breaks down metrics by individual containers. You can see if the game server container is consuming resources as expected or if a sidecar container is causing issues. This granularity helps quickly isolate problems, whether running on EC2 or containers.
+
+![Container Performance dashboard.](/images/3-BlogsTranslated/7.png)
+**Figure 7:** Container Performance dashboard
+
+---
+
+### Next steps
+
+Beyond built-in hardware and game metrics (tick rate, crashes), you can extend monitoring with **custom metrics**.
+
+Examples of game-specific metrics:
+
+- **Combat balance:** Average time-to-kill or DPS by weapon type to detect overpowered weapons after a patch.  
+- **Progression blockers:** Success rate of critical quests or bosses to detect bugs blocking progression.  
+- **Economy health:** Currency inflation or item acquisition patterns to spot exploits.  
+- **AI pathfinding duration:** Time spent calculating NPC paths to detect complex scenarios affecting performance.
+
+After instrumenting custom metrics, create alerts in Amazon Managed Grafana for both system and game-specific thresholds. Examples:
+
+- Memory > 90%  
+- CPU > 85% sustained  
+- Increase in crashed sessions  
+- Spikes in custom metrics (e.g., failed boss attempts)
+
+When an alert triggers, click into the relevant dashboard to investigate — catching issues before players notice.
+
+---
+
+### Conclusion
+
+Optimizing latency connects players to the right location, but **server-side observability** ensures a smooth in-game experience. GameLift Servers telemetry with pre-built dashboards provides visibility to quickly diagnose crashes, performance bottlenecks, and resource issues — without being overwhelmed by raw metrics.
+
+Next time a player complains about a glitchy experience, you’ll know exactly where to look, and with proactive alerting, you’ll catch the issue before they notice.
+
+**Contact an AWS Representative** to learn how we can help accelerate your business.
+
+---
+
+**Further reading:**
+
+- [Getting started with Amazon GameLift Servers](https://aws.amazon.com/gamelift/getting-started/)  
+- [Setting up alerts in Amazon Managed Grafana](https://docs.aws.amazon.com/grafana/latest/userguide/AMG.html)  
+- [Available Amazon GameLift Servers dashboards and metrics](https://docs.aws.amazon.com/gamelift/latest/developerguide/metrics-dashboards.html)  
+
+**Author:** Brian Schuster, Principal Engineer at AWS for Amazon GameLift.
