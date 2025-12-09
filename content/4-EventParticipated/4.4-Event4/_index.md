@@ -1,107 +1,61 @@
 ---
 title: "Event 4"
-date: "`r Sys.Date()`"
+date: "2025-09-08"
 weight: 1
 chapter: false
 pre: " <b> 4.4. </b> "
 ---
 
 {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
+⚠️ **Note:** The information below is for reference purposes only; please **do not copy it verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Workshop Report: “AWS Security & GuardDuty”
+**Summary Report: Attending AWS Cloud Mastery Series #1 - AI/ML/GenAI on AWS**
 
-**Date:** 29/11/2025    
-**Speakers:** Tran Duc Anh, Nguyen Tuan Thinh, Nguyen Do Thanh Dat
+**Attendance Objectives**
+Recently, I had the opportunity to attend the opening event for the "AWS Cloud Mastery" series, focusing on AI, Machine Learning, and Generative AI. My main goal was to update my comprehensive view of these technologies on the AWS platform and learn how to apply them to real-world business problems.
 
-### Event Objectives
+**Speakers**
+The session featured sharing from experienced experts in the industry, including Mr. Lam Tuan Kiet (Sr DevOps Engineer - FPT Software), Mr. Danh Hoang Hieu Nghi (AI Engineer - Renova Cloud), Mr. Dinh Le Hoang Anh (Cloud Engineer Trainee), and Mr. Van Hoang Kha (Community Builder).
 
-- Introduce AWS security tools at the organization (org-level).  
-- Understand how GuardDuty operates as an intelligent managed IDS/IPS.  
-- Learn Detection-as-Code and automate alerting and remediation.  
+**Valuable Knowledge I Harvested:**
 
-### Speakers & Roles
+**1. The Power of Generative AI on Amazon Bedrock**
+This was the part that impressed me the most. Amazon Bedrock acts as a central platform, providing access to leading Foundation Models (FMs) from Anthropic, OpenAI, Meta, etc. This allows us to fine-tune existing models without having to build a model from scratch.
 
-- **Tran Duc Anh** – CloudTrail (org-level)  
-- **Nguyen Tuan Thinh** – GuardDuty Overview, Protection Plans, Alerting & Automation  
-- **Nguyen Do Thanh Dat** – Detection-as-Code (infrastructure + rules)  
+I also reinforced my skills in **Prompt Engineering**, understanding better how to guide the model through various strategies:
 
-### Key Content
+- _Zero-shot:_ Providing a request directly without examples.
+- _Few-shot:_ Providing a handful of examples for the model to mimic.
+- _Chain-of-Thought:_ Asking the model to explain its reasoning steps for a more logical result.
 
-#### CloudTrail (Speaker: Tran Duc Anh)
+Specifically, the **RAG (Retrieval Augmented Generation)** technique was highlighted as an optimal solution to improve accuracy:
 
-- Monitor activities across all AWS accounts at the organization level.  
-- Collect and analyze logs from member accounts to ensure compliance and support forensic analysis.  
+- _Retrieval:_ Pulling real data from the enterprise knowledge base.
+- _Augmentation:_ Adding that data as context for the prompt.
+- _Generation:_ The model answers based on factual information, minimizing hallucinations.
 
-#### GuardDuty Overview (Speaker: Nguyen Tuan Thinh)
+Additionally, **Amazon Titan Embeddings** was introduced as a tool to convert text into vectors, serving semantic search and multilingual RAG workflows.
 
-- **Managed IDS/IPS:** continuously monitor multiple AWS accounts.  
-- **Main data sources:**  
-  - CloudTrail Events  
-  - VPC Flow Logs  
-  - DNS Logs  
-- **Zero configuration:** enable and run automatically  
-- **Highlighted Protection Plans:**  
-  - S3 Protection  
-  - EKS Protection  
-  - Malware Protection (EBS scan)  
-  - RDS Protection  
-  - Lambda Protection  
-  - Runtime Monitoring via GuardDuty Agent  
+**2. AWS AI Services Ecosystem**
+Beyond GenAI, I also reviewed AWS's "ready-made" AI services (APIs) that help solve specific problems quickly without complex model training:
 
-#### Alerting & Automation
+- Image/Video Analysis (Rekognition).
+- Translation (Translate) and Speech-to-Text/Text-to-Speech (Transcribe, Polly).
+- Data Extraction (Textract) and Natural Language Processing (Comprehend).
+- Intelligent Search (Kendra) or Anomaly Detection (Lookout).
 
-- **Detection-as-Code demo using CloudFormation:**  
-  - EventBridge rules trigger only on High or Critical GuardDuty findings  
-  - Automatically invoke Lambda for remediation (isolate instance, disable keys, tag resource…)  
-  - Send real-time alerts via SNS (email/SMS) to teams or customers  
+The _AMZPhoto_ face recognition demo visually illustrated how to integrate these services into a real product.
 
-#### Detection-as-Code (Speaker: Nguyen Do Thanh Dat)
+**3. Amazon Bedrock AgentCore – Putting AI Agents into Practice**
+This is a new framework helping to solve the problem of operating AI Agents at scale (production-ready). It supports long-term memory management, identity security, tool integration (like browsers, code interpreters), and most importantly, observability. This makes deploying frameworks like CrewAI or LangGraph safer and more effective on the AWS platform.
 
-- Deploy detection based on **infrastructure + rules**  
-- Security managed as code, reproducible, and auditable  
-- Integrate with CI/CD for automated detection and response  
+**Plan for Application at Work**
+Based on what I learned, I plan to apply the following knowledge immediately:
 
-### Key Takeaways
+- **Deploy RAG & AgentCore:** Propose and apply these to upcoming internal projects requiring GenAI features to increase accuracy and automation capabilities.
+- **Optimize Development Process:** Use available AWS AI Services instead of building from scratch to shorten Time-to-market.
+- **Improve Model Performance:** Apply advanced Prompt Engineering techniques to optimize output results for current AI tasks.
 
-- AWS GuardDuty is a powerful tool for monitoring and detecting anomalies across accounts.  
-- Zero configuration saves setup time while providing effective monitoring.  
-- Alerting & Automation reduce response time and increase remediation efficiency.  
-- Detection-as-Code transforms security processes into code, making them reproducible and auditable.  
-
-### Workplace Applications
-
-- Set up GuardDuty at the organization level for comprehensive monitoring.  
-- Integrate EventBridge + Lambda + SNS for automated alerts and remediation.  
-- Write and deploy Detection-as-Code to standardize security procedures.  
-- Monitor critical AWS services: S3, EKS, RDS, Lambda, EBS.  
-
-### Event Experience
-
-The workshop provided practical experience in security monitoring and automation:  
-
-#### Learning from Speakers
-
-- Hands-on CloudTrail implementation at org-level  
-- Demo of GuardDuty Alerting & Automation with Lambda and SNS  
-- Learn to write Detection-as-Code for reproducible security deployment  
-
-#### Technical Practice
-
-- Observe CloudTrail, VPC Flow Logs, and DNS Logs workflow  
-- Set up EventBridge rules and Lambda remediation automation  
-- Integrate SNS for real-time alert notifications  
-
-#### Networking & Exchange
-
-- Exchange best practices for deploying GuardDuty organization-wide  
-- Understand the importance of automated alerting and detection-as-code  
-
-#### Lessons Learned
-
-- Zero configuration GuardDuty enables quick and effective monitoring.  
-- Alerting & Automation minimize response time and security risk.  
-- Detection-as-Code provides a modern, reproducible, and auditable approach to security.  
-
-> Overall, the event offered a comprehensive understanding of AWS automated security monitoring, anomaly detection, and code-driven remediation.
+**Side Experience**
+Not only did I absorb knowledge, but the event atmosphere was also extremely lively. I was lucky enough to reach the **Top 6** in the Kahoot competition; however, I dropped off the leaderboard during the final questions. Nevertheless, it was still an interesting game that helped me reinforce the knowledge from this event.

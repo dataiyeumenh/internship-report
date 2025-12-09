@@ -1,6 +1,6 @@
 ---
 title: "Event 3"
-date: "`r Sys.Date()`"
+date: "2025-09-08"
 weight: 1
 chapter: false
 pre: " <b> 4.3. </b> "
@@ -10,167 +10,69 @@ pre: " <b> 4.3. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bài thu hoạch Workshop: “DevOps on AWS”
-
-**Ngày:** 17/11/2025    
-**Diễn giả:** Truong Quang Dinh, Van Hoang Kha, Bao Huynh, Thinh Nguyen, Vy Tran
+# Data Science on AWS
 
 ### Mục Đích Của Sự Kiện
 
-- Giới thiệu tư duy và văn hóa DevOps.  
-- Giải thích vai trò và trách nhiệm của các vị trí liên quan đến DevOps.  
-- Trình bày CI/CD pipelines, Infrastructure as Code (IaC) và best practices.  
-- Giới thiệu container services trên AWS, giám sát hệ thống và observability.  
-- Nhấn mạnh việc học thực hành và triển khai dự án thực tế.  
+- Chia sẻ các dịch vụ cần thiết cho việc xử lý dữ liệu( phân loại cảm xúc, bình luận, ...)
 
-### Danh Sách Diễn Giả & Vai Trò
+### Danh Sách Diễn Giả
 
-- **Truong Quang Dinh** – DevOps Culture & Mindset  
-- **Van Hoang Kha** – CI/CD Pipeline & Infrastructure as Code  
-- **Bao Huynh, Thinh Nguyen, Vy Tran** – Container Services, Monitoring & Observability, DevOps Best Practices  
+- **Van Hoang Kha** - Cloud Solutions Architect, AWS Community Builder
+- **Bach Doan Vuong** - Cloud DevOps Engineer, AWS Community Builder
 
 ### Nội Dung Nổi Bật
 
-#### Văn Hóa DevOps
+Dưới đây là bản tóm tắt nội dung sự kiện tập trung vào các dịch vụ bạn đã liệt kê, được trình bày theo phong cách báo cáo chuyên nghiệp và không chứa biểu tượng (icon) theo yêu cầu của bạn.
 
-- **Định nghĩa:** Kỹ sư DevOps là cầu nối giữa Dev team và Ops team.  
-- **Mục đích:** Đảm bảo hợp tác, tối ưu quá trình delivery và cải thiện độ ổn định hệ thống.  
-- **Các yếu tố cốt lõi:**  
-  - Collaboration & Shared Responsibility  
-  - Automation Everything (giảm lỗi từ con người)  
-  - Continuous Learning & Experimentation  
-  - Measurement & Metrics  
+---
 
-#### Các Vai Trò DevOps Thế Hệ Mới
+**BÁO CÁO TỔNG KẾT CHƯƠNG TRÌNH ĐÀO TẠO AWS: AI & MACHINE LEARNING**
 
-- **DevOps Engineer:** Triển khai và tối ưu CI/CD pipelines  
-- **Cloud Engineer**  
-- **Platform Engineer** – Chú trọng IDP (Internal Developer Portal) và LBAC  
-- **Site Reliability Engineer**  
+**1. Giới thiệu tổng quan về các khái niệm công nghệ**
 
-#### Đo Lường Thành Công: DevOps Metrics
+Mở đầu chương trình, chúng tôi đã được hệ thống hóa lại các khái niệm nền tảng quan trọng trong lĩnh vực công nghệ thông minh:
 
-- Giám sát tình trạng deployment  
-- Cải thiện agility  
-- Đảm bảo độ ổn định hệ thống  
-- Tối ưu trải nghiệm khách hàng  
-- Hỗ trợ đánh giá ROI của công nghệ  
+- **AI (Artificial Intelligence):** Trí tuệ nhân tạo, khái niệm bao trùm về việc tạo ra các hệ thống thông minh.
+- **ML (Machine Learning):** Máy học, một tập con của AI cho phép máy tính học từ dữ liệu.
+- **DL (Deep Learning):** Học sâu, sử dụng các mạng nơ-ron phức tạp.
+- **GenAI (Generative AI):** AI tạo sinh, tập trung vào việc tạo ra các nội dung và dữ liệu mới.
 
-#### Lộ Trình Học DevOps
+**2. AWS với vai trò nhà cung cấp dịch vụ**
 
-- **Nên làm:**  
-  - Bắt đầu từ nền tảng cơ bản  
-  - Học bằng cách xây dựng dự án thực tế  
-  - Ghi chép toàn bộ quá trình  
-  - Thành thạo từng kỹ năng một  
-  - Nâng cao kỹ năng mềm  
+Nội dung tiếp theo giới thiệu về AWS như một nhà cung cấp dịch vụ toàn diện. AWS cung cấp các bộ công cụ có sẵn (Managed Services) giúp doanh nghiệp ứng dụng AI nhanh chóng mà không cần đầu tư quá nhiều vào việc xây dựng hạ tầng từ con số không.
 
-- **Không nên làm:**  
-  - Chỉ xem tutorial mà không thực hành  
-  - Copy-paste mà không hiểu  
-  - So sánh tiến độ với người khác  
-  - Bỏ cuộc sau thất bại  
+**3. Chi tiết các dịch vụ AWS được giới thiệu**
 
-- **Tư duy:** Tập trung sâu vào một lĩnh vực nhưng có kiến thức tổng quát ở các lĩnh vực khác:  
-> “Deep in one area - Broad knowledge across many - you don’t need to master everything at once.”  
+Trọng tâm của buổi đào tạo đi sâu vào các công cụ cụ thể giúp giải quyết các bài toán kinh doanh thực tế:
 
-#### CI/CD Pipeline (Diễn giả: Van Hoang Kha)
+**Amazon Comprehend (Dịch vụ xử lý ngôn ngữ tự nhiên - NLP)**
+Đây là dịch vụ được thảo luận chi tiết nhất với khả năng xử lý văn bản đa ngôn ngữ mạnh mẽ:
 
-- **Workflow cơ bản:** Development → Peer Review → QA → Preprod → Production  
-- **Thực hành DevOps:**  
-  - Test trước khi triển khai  
-  - Tự động hóa delivery chỉ với 1 nút nhấn  
-  - Static analysis và automated testing  
-  - Tạo template IaC → triển khai tự động → self-service → full automation  
+- **Phân tích cảm xúc:** Tự động phân loại các nhận xét, bình luận của khách hàng theo sắc thái tích cực, tiêu cực hoặc trung tính.
+- **Tóm tắt văn bản:** Rút gọn nội dung từ các tài liệu dài.
+- **Xử lý thông tin quy mô lớn:** Hỗ trợ xử lý và phân loại email hàng loạt.
+- **Bảo mật thông tin:** Có khả năng nhận diện, phân loại và bảo vệ các thông tin cá nhân (PII) nhạy cảm trong văn bản.
 
-- **Continuous Delivery vs Continuous Deployment:**  
-  - **Continuous Delivery:** Dev → Unit Test → Integration Test → Acceptance Test → Production  
-  - **Continuous Deployment:** Dev → Unit Test → Integration Test → Acceptance Test → Production  
+**Nhóm dịch vụ xử lý ngôn ngữ và văn bản khác**
 
-#### Infrastructure as Code (IaC)
+- **Amazon Translate:** Dịch vụ dịch thuật ngôn ngữ tự động.
+- **Amazon Textract:** Công cụ trích xuất dữ liệu từ văn bản scan, giấy tờ, bao gồm cả chữ viết tay và các biểu mẫu phức tạp.
+- **Amazon Transcribe:** Dịch vụ chuyển đổi giọng nói (âm thanh) thành văn bản viết.
 
-- **Vấn đề với ClickOps:** Quản lý thủ công dễ lỗi, không scale được.  
-- **Định nghĩa IaC:** Quản lý hạ tầng bằng code thay vì thao tác thủ công.  
-- **Lợi ích:** Automation, Scalability, Reproducibility, Collaboration  
+**Nhóm dịch vụ hình ảnh và thị giác máy tính**
 
-- **Công cụ IaC của AWS:**  
-  - **CloudFormation Template:** Định nghĩa hạ tầng theo dạng declarative.  
-    - Các phần chính:  
-      - Format Version  
-      - Description  
-      - Parameters  
-      - Resources  
-      - Mappings  
-      - Conditions  
-      - Outputs  
-  - **CloudFormation Stack:** Đơn vị triển khai kết hợp tất cả resources trong template; hỗ trợ update, xóa, chỉnh sửa.  
+- **Amazon Rekognition:** Dịch vụ dựa trên Deep Learning chuyên dùng để phân tích hình ảnh và video (nhận diện đối tượng, khuôn mặt, kiểm duyệt nội dung).
 
-#### Container Services trên AWS (Bao Huynh, Thinh Nguyen, Vy Tran)
+**Nhóm dịch vụ trải nghiệm khách hàng**
 
-- **Docker Fundamentals:** Microservices và containerization.  
-- **Amazon ECR:** Lưu trữ image, scanning, lifecycle policies.  
-- **Amazon ECS & EKS:** Chiến lược triển khai, scaling, orchestration.  
-- **AWS App Runner:** Triển khai container đơn giản.  
-- Demo & Case Study: So sánh triển khai microservices.  
+- **Amazon Personalize:** Giải pháp nâng cao trải nghiệm khách hàng thông qua cá nhân hóa. Dịch vụ này ghi nhận và phân tích hành vi của người dùng, từ đó đưa ra các đề xuất sản phẩm hoặc nội dung phù hợp nhất với sở thích riêng của từng cá nhân.
 
-#### Monitoring & Observability
+**Hạ tầng kỹ thuật**
 
-- **CloudWatch:** Metrics, logs, alarms, dashboards.  
-- **AWS X-Ray:** Distributed tracing và performance insights.  
-- Demo: Thiết lập full-stack observability.  
-- Best practices: alerting, dashboards, on-call processes.  
+- **SageMaker Instance:** Cung cấp môi trường máy chủ và công cụ cần thiết để các nhà phát triển có thể tự xây dựng, huấn luyện và triển khai các mô hình máy học tùy chỉnh theo nhu cầu riêng.
 
-#### DevOps Best Practices & Case Studies
+#### Một số hình ảnh khi tham gia sự kiện
 
-- Deployment strategies: feature flags, A/B testing  
-- Automated testing và CI/CD integration  
-- Incident management và postmortems  
-- Case studies: startup và enterprise DevOps transformations  
-
-### Những Gì Học Được
-
-- DevOps không chỉ là CI/CD mà còn bao gồm văn hóa, hợp tác, tự động hóa và học tập liên tục.  
-- Containerization và IaC giúp hạ tầng scalable, reproducible và dễ quản lý.  
-- Automation giúp giảm lỗi và tăng năng suất.  
-- Tập trung sâu vào một lĩnh vực nhưng có kiến thức tổng quát.  
-- Thực hành dự án thực tế là cách tốt nhất để hiểu workflow và triển khai IaC.  
-- Giao tiếp rõ ràng là chìa khóa để kết nối Dev và Ops teams.  
-
-### Ứng Dụng Vào Công Việc
-
-- Triển khai CI/CD pipelines tự động hóa từ unit test đến deployment.  
-- Sử dụng AWS CloudFormation để quản lý hạ tầng hiệu quả.  
-- Sử dụng container services (ECS, EKS, App Runner) để deploy microservices.  
-- Giám sát và observability với CloudWatch và X-Ray.  
-- Áp dụng tư duy DevOps: hợp tác, tự động hóa, đo lường hiệu quả.  
-- Ghi chép và học từ dự án thực tế.  
-
-### Trải nghiệm trong sự kiện
-
-Workshop **“DevOps Mindset & Container Services on AWS”** mang lại nhiều kiến thức thực tiễn:  
-
-#### Học hỏi từ diễn giả
-
-- Thực hành CI/CD, IaC và container services với các công cụ AWS.  
-- Chia sẻ thực tế về vai trò Platform Engineer, DevOps Engineer, Site Reliability Engineer.  
-
-#### Kỹ thuật thực tế
-
-- Quan sát workflow từ development đến production.  
-- Học cách tạo và cải tiến pipeline CI/CD.  
-- Thực hành automation và deployment bằng CloudFormation templates và containers.  
-- Cài đặt monitoring & observability full-stack với CloudWatch và X-Ray.  
-
-#### Kết nối & Trao đổi
-
-- Tương tác với diễn giả và các đồng nghiệp.  
-- Hiểu tầm quan trọng của giao tiếp rõ ràng giữa Dev và Ops teams.  
-
-#### Bài học rút ra
-
-- Tư duy DevOps giúp tăng năng suất, giảm lỗi và đảm bảo hệ thống ổn định.  
-- Thực hành là chìa khóa để thành thạo automation, CI/CD pipelines và container deployment.  
-- IaC và containerization giúp hạ tầng scalable, reproducible và collaborative.  
-- Monitoring & observability là thiết yếu để đảm bảo reliability.  
-
-> Nhìn chung, sự kiện cung cấp cái nhìn toàn diện về tư duy DevOps, văn hóa, công cụ, container services, monitoring & observability, nhấn mạnh tự động hóa, hợp tác và học tập thực tế.
+- Thêm các hình ảnh của các bạn tại đây
+  > Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.

@@ -1,6 +1,6 @@
 ---
 title: "Event 4"
-date: "`r Sys.Date()`"
+date: "2025-09-08"
 weight: 1
 chapter: false
 pre: " <b> 4.4. </b> "
@@ -10,98 +10,52 @@ pre: " <b> 4.4. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bài thu hoạch Workshop: “AWS Security & GuardDuty”
+**Báo Cáo Tổng Kết: Tham dự AWS Cloud Mastery Series #1 - AI/ML/GenAI on AWS**
 
-**Ngày:** 29/11/2025    
-**Diễn giả:** Tran Duc Anh, Nguyen Tuan Thinh, Nguyen Do Thanh Dat
+**Mục tiêu tham dự**
+Vừa qua, tôi đã có cơ hội tham gia sự kiện mở màn cho chuỗi "AWS Cloud Mastery" với chủ đề tập trung vào AI, Machine Learning và Generative AI. Mục đích chính của tôi là cập nhật bức tranh toàn cảnh về các công nghệ này trên nền tảng AWS và tìm hiểu cách áp dụng chúng vào các bài toán thực tế của doanh nghiệp.
 
-### Mục Đích Của Sự Kiện
+**Diễn giả**
+Buổi chia sẻ có sự góp mặt của các chuyên gia giàu kinh nghiệm trong ngành, bao gồm anh Lâm Tuấn Kiệt (Sr DevOps Engineer - FPT Software), anh Danh Hoàng Hiếu Nghi (AI Engineer - Renova Cloud), bạn Đinh Lê Hoàng Anh (Cloud Engineer Trainee) và anh Văn Hoàng Kha (Community Builder).
 
-- Giới thiệu các công cụ bảo mật AWS ở cấp tổ chức (org-level).  
-- Hiểu cách vận hành GuardDuty như một Managed IDS/IPS thông minh.  
-- Học cách triển khai Detection-as-Code và tự động hóa alerting.  
+**Những kiến thức đắt giá tôi đã thu hoạch được:**
 
-### Danh Sách Diễn Giả & Vai Trò
+**1. Sức mạnh của Generative AI trên Amazon Bedrock**
+Đây là phần tôi thấy ấn tượng nhất. Amazon Bedrock đóng vai trò như một nền tảng trung tâm, cung cấp quyền truy cập vào các Foundation Models (FMs) hàng đầu từ Anthropic, OpenAI, Meta, v.v. Điều này giúp chúng ta không cần tốn công xây dựng model từ con số 0 mà có thể tinh chỉnh các model có sẵn này.
 
-- **Tran Duc Anh** – CloudTrail (org-level)  
-- **Nguyen Tuan Thinh** – Tổng quan GuardDuty, Protection Plans, Alerting & Automation  
-- **Nguyen Do Thanh Dat** – Detection-as-Code (infrastructure + rules)  
+Tôi cũng đã củng cố thêm kỹ năng về **Prompt Engineering** (Kỹ thuật đặt lệnh), hiểu rõ hơn về cách điều hướng mô hình qua các chiến lược:
 
-### Nội Dung Nổi Bật
+- _Zero-shot:_ Đưa yêu cầu trực tiếp mà không cần ví dụ.
+- _Few-shot:_ Cung cấp một vài ví dụ mẫu để model học theo.
+- _Chain-of-Thought:_ Yêu cầu model diễn giải từng bước tư duy để có kết quả logic hơn.
 
-#### CloudTrail (Speaker: Tran Duc Anh)
+Đặc biệt, kỹ thuật **RAG (Retrieval Augmented Generation)** được nhấn mạnh như một giải pháp tối ưu để nâng cao độ chính xác:
 
-- Giám sát hoạt động trên toàn bộ tổ chức AWS (org-level)  
-- Lưu trữ và phân tích logs từ các tài khoản con để đảm bảo compliance và forensic  
+- _Retrieval (Truy xuất):_ Lấy dữ liệu thực từ kho kiến thức doanh nghiệp.
+- _Augmentation (Tăng cường):_ Đưa dữ liệu đó vào làm ngữ cảnh cho prompt.
+- _Generation (Tạo sinh):_ Model trả lời dựa trên thông tin thực tế, giảm thiểu ảo giác (hallucination).
 
-#### GuardDuty Overview (Speaker: Nguyen Tuan Thinh)
+Bên cạnh đó là **Amazon Titan Embeddings**, công cụ giúp chuyển đổi văn bản thành các vector phục vụ cho việc tìm kiếm ngữ nghĩa và quy trình RAG đa ngôn ngữ.
 
-- **Managed IDS/IPS thông minh:** giám sát liên tục các tài khoản AWS  
-- **Nguồn dữ liệu chính:**  
-  - CloudTrail Events  
-  - VPC Flow Logs  
-  - DNS Logs  
-- **Zero configuration:** bật là chạy, phân tích tự động  
-- **Protection Plans nổi bật:**  
-  - S3 Protection  
-  - EKS Protection  
-  - Malware Protection (EBS scan)  
-  - RDS Protection  
-  - Lambda Protection  
-  - Runtime Monitoring qua GuardDuty Agent  
+**2. Hệ sinh thái AWS AI Services**
+Ngoài GenAI, tôi cũng được ôn lại các dịch vụ AI "mì ăn liền" (API có sẵn) của AWS giúp giải quyết nhanh các bài toán cụ thể mà không cần training model phức tạp:
 
-#### Alerting & Automation
+- Phân tích hình ảnh/video (Rekognition).
+- Dịch thuật (Translate) và chuyển đổi giọng nói/văn bản (Transcribe, Polly).
+- Bóc tách dữ liệu văn bản (Textract) và phân tích ngôn ngữ tự nhiên (Comprehend).
+- Tìm kiếm thông minh (Kendra) hay phát hiện bất thường (Lookout).
 
-- **Detection-as-Code demo bằng CloudFormation:**  
-  - EventBridge rule chỉ trigger khi GuardDuty finding có severity High hoặc Critical  
-  - Tự động invoke Lambda để remediation (isolate instance, disable keys, tag resource…)  
-  - Gửi alert real-time qua SNS (email/SMS) tới team hoặc khách hàng  
+Phần demo ứng dụng nhận diện khuôn mặt _AMZPhoto_ đã minh họa rất trực quan cách tích hợp các dịch vụ này vào sản phẩm thực tế.
 
-#### Detection-as-Code (Speaker: Nguyen Do Thanh Dat)
+**3. Amazon Bedrock AgentCore – Đưa AI Agent vào thực tiễn**
+Đây là một framework mới giúp giải quyết bài toán vận hành AI Agent ở quy mô lớn (production-ready). Nó hỗ trợ quản lý bộ nhớ dài hạn, bảo mật danh tính, tích hợp công cụ (như trình duyệt, code interpreter) và quan trọng nhất là khả năng giám sát (observability). Điều này giúp việc triển khai các framework như CrewAI hay LangGraph trở nên an toàn và hiệu quả hơn trên nền tảng AWS.
 
-- Triển khai detection dựa trên **infrastructure + rules**  
-- Quản lý bảo mật theo code, reproducible và dễ audit  
-- Tích hợp với CI/CD để tự động hóa quá trình phát hiện và phản ứng  
+**Kế hoạch áp dụng vào công việc**
+Từ những gì đã học, tôi định hướng sẽ áp dụng ngay các kiến thức sau:
 
-### Những Gì Học Được
+- **Triển khai RAG & AgentCore:** Đề xuất và áp dụng vào các dự án nội bộ sắp tới cần tính năng GenAI để tăng độ chính xác và khả năng tự động hóa.
+- **Tối ưu quy trình phát triển:** Sử dụng các AWS AI Services có sẵn thay vì tự xây dựng để rút ngắn thời gian đưa sản phẩm ra thị trường (Time-to-market).
+- **Cải thiện hiệu suất Model:** Áp dụng các kỹ thuật Prompt Engineering nâng cao để tối ưu hóa kết quả đầu ra cho các tác vụ AI hiện tại.
 
-- AWS GuardDuty là một công cụ mạnh mẽ để giám sát và phát hiện bất thường trên nhiều tài khoản AWS.  
-- Zero configuration giúp tiết kiệm thời gian triển khai nhưng vẫn đảm bảo hiệu quả giám sát.  
-- Alerting & Automation giúp giảm thời gian phản ứng và tăng hiệu quả remediation.  
-- Detection-as-Code biến quy trình bảo mật thành code, dễ kiểm soát và audit.  
-
-### Ứng Dụng Vào Công Việc
-
-- Thiết lập GuardDuty cho toàn bộ tổ chức AWS để giám sát và phát hiện sự cố.  
-- Tích hợp EventBridge + Lambda + SNS để tự động hóa alert và remediation.  
-- Viết và triển khai Detection-as-Code để chuẩn hóa quy trình bảo mật.  
-- Giám sát các dịch vụ AWS quan trọng: S3, EKS, RDS, Lambda, EBS.  
-
-### Trải nghiệm trong sự kiện
-
-Workshop cung cấp trải nghiệm thực tế về giám sát bảo mật và automation:  
-
-#### Học hỏi từ diễn giả
-
-- Thực hành triển khai CloudTrail ở cấp tổ chức  
-- Demo Alerting & Automation với GuardDuty, Lambda và SNS  
-- Học cách viết Detection-as-Code để triển khai bảo mật reproducible  
-
-#### Kỹ thuật thực tế
-
-- Quan sát luồng dữ liệu CloudTrail, VPC Flow Logs, DNS Logs  
-- Thiết lập EventBridge rules và Lambda remediation automation  
-- Tích hợp SNS để nhận alert real-time  
-
-#### Kết nối & Trao đổi
-
-- Trao đổi về best practices triển khai GuardDuty cho tổ chức  
-- Hiểu tầm quan trọng của tự động hóa alert và detection-as-code  
-
-#### Bài học rút ra
-
-- Zero configuration GuardDuty giúp giám sát hiệu quả và nhanh chóng.  
-- Alerting & Automation giảm thiểu thời gian phản hồi và rủi ro bảo mật.  
-- Detection-as-Code là cách tiếp cận hiện đại, reproducible và có thể audit.  
-
-> Tổng thể, sự kiện giúp nắm rõ cách AWS cung cấp giám sát bảo mật tự động, phát hiện bất thường và triển khai remediation theo code.
+**Trải nghiệm bên lề**
+Không chỉ được tiếp thu kiến thức mà không khí sự kiện cũng vô cùng sôi động. Tôi đã may mắn lọt vào **Top 6** cuộc thi Kahoot, tuy nhiên lại rớt khỏi bảng xếp hạng ở những câu cuối. Dù vậy, đây vẫn là một trò chơi thú vị giúp tôi củng cố lại kiến thức trong sự kiện lần này.

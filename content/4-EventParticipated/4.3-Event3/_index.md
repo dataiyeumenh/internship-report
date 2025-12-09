@@ -1,176 +1,78 @@
 ---
 title: "Event 3"
-date: "`r Sys.Date()`"
+date: "2025-09-08"
 weight: 1
 chapter: false
 pre: " <b> 4.3. </b> "
 ---
 
 {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
+⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Workshop Report: “DevOps on AWS”
-
-**Date:** 17/11/2025  
-**Speakers:** Truong Quang Dinh, Van Hoang Kha, Bao Huynh, Thinh Nguyen, Vy Tran
+# Data Science on AWS
 
 ### Event Objectives
 
-- Introduce DevOps mindset and culture.  
-- Explain roles and responsibilities related to DevOps.  
-- Present CI/CD pipelines, Infrastructure as Code (IaC), and best practices.  
-- Introduce container services on AWS, monitoring, and observability.  
-- Emphasize hands-on learning and real project implementation.  
+- Share essential services for data processing (sentiment analysis, comment classification, etc.).
 
-### Speakers & Roles
+### List of Speakers
 
-- **Truong Quang Dinh** – DevOps Culture & Mindset  
-- **Van Hoang Kha** – CI/CD Pipeline & Infrastructure as Code  
-- **Bao Huynh, Thinh Nguyen, Vy Tran** – Container Services, Monitoring & Observability, DevOps Best Practices  
+- **Van Hoang Kha** - Cloud Solutions Architect, AWS Community Builder
+- **Bach Doan Vuong** - Cloud DevOps Engineer, AWS Community Builder
 
 ### Key Highlights
 
-#### DevOps Culture
+Below is a summary of the event content focusing on the listed services, presented in a professional report style without icons as requested.
 
-- **Definition:** DevOps engineers act as a bridge between Dev and Ops teams.  
-- **Purpose:** Ensure collaboration, optimize delivery, and improve system stability.  
-- **Core Elements:**  
-  - Collaboration & Shared Responsibility  
-  - Automation Everything (reduces human error)  
-  - Continuous Learning & Experimentation  
-  - Measurement & Metrics  
+---
 
-#### Next-Generation DevOps Roles
+**AWS TRAINING PROGRAM SUMMARY REPORT: AI & MACHINE LEARNING**
 
-- **DevOps Engineer:** Implement and optimize CI/CD pipelines  
-- **Cloud Engineer**  
-- **Platform Engineer:** Focus on IDP (Internal Developer Portal) and LBAC  
-- **Site Reliability Engineer**  
+**1. Overview of Technology Concepts**
 
-#### Measuring Success: DevOps Metrics
+To begin the program, we systematized important foundational concepts in the field of intelligent technology:
 
-- Monitor deployment health  
-- Improve agility  
-- Ensure system stability  
-- Optimize customer experience  
-- Support technology ROI assessment  
+- **AI (Artificial Intelligence):** An overarching concept regarding the creation of intelligent systems.
+- **ML (Machine Learning):** A subset of AI that allows computers to learn from data.
+- **DL (Deep Learning):** Uses complex neural networks to model patterns in data.
+- **GenAI (Generative AI):** Focuses on creating new content and data.
 
-#### DevOps Learning Path
+**2. AWS as a Service Provider**
 
-- **Do:**  
-  - Start with fundamentals  
-  - Learn by building real projects  
-  - Document everything  
-  - Master one skill at a time  
-  - Enhance soft skills  
+The next section introduced AWS as a comprehensive service provider. AWS offers Managed Services that help businesses apply AI quickly without investing heavily in building infrastructure from scratch.
 
-- **Don't:**  
-  - Stay in tutorial hell  
-  - Copy-paste blindly  
-  - Compare progress to others  
-  - Give up after failures  
+**3. Details of Introduced AWS Services**
 
-- **Mindset:** Deep knowledge in one area, broad knowledge across many:  
-> “Deep in one area - Broad knowledge across many - you don’t need to master everything at once.”  
+The training focused deeply on specific tools designed to solve real-world business problems:
 
-#### CI/CD Pipeline (Speaker: Van Hoang Kha)
+**Amazon Comprehend (Natural Language Processing Service - NLP)**
+This service was discussed in the most detail, featuring powerful multi-language text processing capabilities:
 
-- **Basic workflow:** Development → Peer Review → QA → Preprod → Production  
-- **DevOps practices:**  
-  - Test before deployment  
-  - Automate delivery with a single button  
-  - Static analysis & automated testing  
-  - Create IaC templates → auto deployment → self-service → full automation  
+- **Sentiment Analysis:** Automatically classifies customer reviews and comments based on positive, negative, or neutral nuances.
+- **Text Summarization:** Condenses content from long documents.
+- **Large-scale Information Processing:** Supports bulk email processing and classification.
+- **Information Security:** Capable of identifying, classifying, and protecting sensitive Personally Identifiable Information (PII) within text.
 
-- **Continuous Delivery vs Continuous Deployment:**  
-  - **Continuous Delivery:** Dev → Unit Test → Integration Test → Acceptance Test → Production  
-  - **Continuous Deployment:** Dev → Unit Test → Integration Test → Acceptance Test → Production  
+**Other Language and Text Processing Services**
 
-#### Infrastructure as Code (IaC)
+- **Amazon Translate:** Automated language translation service.
+- **Amazon Textract:** A tool for extracting data from scanned documents and papers, including handwriting and complex forms.
+- **Amazon Transcribe:** A service for converting speech (audio) into written text.
 
-- **Issue with ClickOps:** Manual management prone to errors, not scalable.  
-- **Definition of IaC:** Manage infrastructure using code instead of manual operations.  
-- **Benefits:** Automation, Scalability, Reproducibility, Collaboration  
+**Image and Computer Vision Services**
 
-- **AWS IaC Tools:**  
-  - **CloudFormation Template:** Declarative infrastructure definition.  
-    - Key components:  
-      - Format Version  
-      - Description  
-      - Parameters  
-      - Resources  
-      - Mappings  
-      - Conditions  
-      - Outputs  
-  - **CloudFormation Stack:** Deployment unit combining all resources in the template; supports update, deletion, and modification.  
+- **Amazon Rekognition:** A Deep Learning-based service specialized for analyzing images and videos (object detection, facial recognition, content moderation).
 
-#### Container Services on AWS (Bao Huynh, Thinh Nguyen, Vy Tran)
+**Customer Experience Services**
 
-- **Docker Fundamentals:** Microservices and containerization  
-- **Amazon ECR:** Image storage, scanning, lifecycle policies  
-- **Amazon ECS & EKS:** Deployment strategies, scaling, orchestration  
-- **AWS App Runner:** Simplified container deployment  
-- Demo & Case Study: Microservices deployment comparison  
+- **Amazon Personalize:** A solution to enhance customer experience through personalization. This service records and analyzes user behavior, thereby providing product or content recommendations best suited to individual preferences.
 
-#### Monitoring & Observability
+**Technical Infrastructure**
 
-- **CloudWatch:** Metrics, logs, alarms, dashboards  
-- **AWS X-Ray:** Distributed tracing and performance insights  
-- Demo: Full-stack observability setup  
-- Best practices: alerting, dashboards, on-call processes  
+- **SageMaker Instance:** Provides the server environment and tools necessary for developers to self-build, train, and deploy custom machine learning models according to specific needs.
 
-#### DevOps Best Practices & Case Studies
+#### Some photos from the event
 
-- Deployment strategies: feature flags, A/B testing  
-- Automated testing and CI/CD integration  
-- Incident management and postmortems  
-- Case studies: startup and enterprise DevOps transformations  
-
-### Key Learnings
-
-- DevOps encompasses CI/CD, culture, collaboration, automation, and continuous learning.  
-- Containerization and IaC make infrastructure scalable, reproducible, and manageable.  
-- Automation reduces errors and increases productivity.  
-- Focus deeply on one area but maintain general knowledge across others.  
-- Hands-on project practice is the best way to understand workflows and deploy IaC.  
-- Clear communication is key to bridging Dev and Ops teams.  
-
-### Applications at Work
-
-- Implement automated CI/CD pipelines from unit test to deployment.  
-- Use AWS CloudFormation for effective infrastructure management.  
-- Deploy microservices with ECS, EKS, and App Runner.  
-- Monitor and ensure observability with CloudWatch and X-Ray.  
-- Apply DevOps mindset: collaboration, automation, measurement.  
-- Document and learn from real projects.  
-
-### Event Experience
-
-Workshop **“DevOps Mindset & Container Services on AWS”** provided extensive practical knowledge:  
-
-#### Learning from Speakers
-
-- Hands-on CI/CD, IaC, and container services with AWS tools  
-- Insights on Platform Engineer, DevOps Engineer, and Site Reliability Engineer roles  
-
-#### Practical Skills
-
-- Observe workflow from development to production  
-- Learn to create and improve CI/CD pipelines  
-- Practice automation and deployment using CloudFormation templates and containers  
-- Set up full-stack monitoring & observability with CloudWatch and X-Ray  
-
-#### Networking & Interaction
-
-- Interact with speakers and peers  
-- Understand the importance of clear communication between Dev and Ops teams  
-
-#### Key Takeaways
-
-- DevOps mindset increases productivity, reduces errors, and ensures system stability  
-- Hands-on practice is essential for mastering automation, CI/CD pipelines, and container deployment  
-- IaC and containerization make infrastructure scalable, reproducible, and collaborative  
-- Monitoring & observability are essential to ensure reliability  
-
-> Overall, the event provided a comprehensive view of DevOps mindset, culture, tools, container services, monitoring & observability, emphasizing automation, collaboration, and hands-on learning.
+- Add your photos here
+  > Overall, the event not only provided technical knowledge but also helped me change my thinking regarding application design, system modernization, and more effective team collaboration.

@@ -1,87 +1,114 @@
 ---
 title: "Event 2"
-date: "`r Sys.Date()`"
+date: "2025-09-08"
 weight: 1
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
 {{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
+⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Workshop Report: “AI/ML/GenAI on AWS”
-
-**Date:** 15/11/2025   
-**Speakers:** Dinh Le Hoang Anh, Lam Tuan Kiet, Danh Hoang Hieu Nghi  
+# Data Resiliency in a Cloud-first World
 
 ### Event Objectives
 
-- Introduce AWS cloud services and modern AI foundations.  
-- Explore the concept and applications of foundation models.  
-- Demonstrate Amazon Bedrock for building AI-powered applications.  
-- Encourage hands-on learning and experimentation with AWS AI tools.  
+- Share best practices in modern application design.
+- Introduce DDD methods and event-driven architecture.
+- Guide on selecting appropriate compute services.
+- Introduce AI tools supporting the development lifecycle.
 
-### Speakers & Topics
+### List of Speakers
 
-- **Dinh Le Hoang Anh** – Overview of AWS Cloud Services  
-- **Lam Tuan Kiet** – Introduction to Foundation Models  
-- **Danh Hoang Hieu Nghi** – Explore Amazon Bedrock & AI-powered application development  
+- **Paul Haverfield** -
+  Principal Storage Specialist BDM, APJ
+- **Tamelly Lim** - Specialist Solutions Architect
+- **Ameen Khan S** - GTM specialist for Storage - Data & AI pillar covering ASEAN markets
+- **Paul Hidalgo** -
 
 ### Key Highlights
 
-#### AWS Cloud Services (Dinh Le Hoang Anh)
+Today, I had the opportunity to attend an AWS program covering an extremely urgent topic in the current context: **Data Resiliency**. More than just simple backups, the event opened up new perspectives on protecting digital assets against increasingly sophisticated threats.
 
-- Overview of core AWS services: EC2, S3, Lambda, RDS, ECS, Fargate.  
-- Best practices for cloud architecture, security, and cost optimization.  
-- Demonstration of setting up a simple web application using AWS managed services.  
-- Emphasis on scalability, reliability, and automation.  
+Here are the key takeaways I gathered:
 
-#### Foundation Models (Lam Tuan Kiet)
+### 1. Redefining: How is Data Resiliency different from High Availability (HA) and Disaster Recovery (DR)?
 
-- Definition and importance of foundation models in AI.  
-- Use cases: text generation, summarization, code assistance, and embeddings.  
-- Differences between traditional ML models and foundation models: scale, generalization, transfer learning.  
-- Practical example: fine-tuning a pre-trained language model for domain-specific tasks.  
+Previously, we often focused on HA (ensuring systems are always online) or DR (recovering from physical disasters). However, **Data Resiliency** is a broader and more "proactive" concept:
 
-#### Amazon Bedrock (Danh Hoang Hieu Nghi)
+- **Context:** "Everything fails, all the time" (Werner Vogels) – Everything is prone to failure, including physical keys or hardware.
+- **The Difference:** While HA handles infrastructure incidents, Data Resiliency focuses on **data integrity**. It is the organizational ability to maintain operations, withstand, and recover even when under cyberattack (such as Ransomware) or human error.
+- **Goal:** To detect anomalies and automate response processes without human intervention.
 
-- Introduction to Amazon Bedrock: a fully managed service for building AI applications without managing infrastructure.  
-- Demo of creating a chatbot and text summarization service using foundation models via Bedrock.  
-- Discussion on integration with existing AWS services and pipelines.  
-- Benefits: faster deployment, scalability, pay-as-you-go pricing, and easy model selection.  
+### 2. Why has Data Resiliency become an "Absolute Necessity"?
 
-### Lessons Learned
+The explosion of data creation comes with new technological vulnerabilities. Three main trends are driving the shift from _Protection_ to _Resiliency_:
 
-#### Design Thinking & Strategy
+1.  **Regulatory:** Compliance with strict data protection laws.
+2.  **Technology:** The complexity of Multi-cloud and Hybrid-cloud environments.
+3.  **Threat Landscape:** Ransomware no longer just encrypts primary data; it also targets backups.
 
-- AI-first approach: integrate AI from the early stages of solution design.  
-- Foundation models can accelerate development by leveraging pre-trained knowledge.  
-- Emphasize experimentation: iterate, test, and refine AI applications quickly.  
+### 3. Data Immutability: The Impenetrable Shield
 
-#### Technical Architecture
+A keyword mentioned repeatedly was **Data Immutability**.
 
-- Understand how foundation models can complement cloud-native services.  
-- Explore serverless patterns and API-driven architecture using Bedrock.  
-- Automate deployment and scaling of AI services using AWS best practices.  
+- This refers to the ability to create data copies that **cannot be changed or deleted** for a set period.
+- In the event of a Ransomware attack, even if hackers possess top-level admin rights, they cannot alter this backup.
+- It acts as the "Last line of defense," ensuring that at least one clean version always exists for recovery.
 
-#### Practical Applications
+### 4. Protection Strategy: The AWS 3-2-1-1-0 Model
 
-- Build prototypes using Amazon Bedrock for internal or client-facing solutions.  
-- Integrate foundation models for tasks like summarization, Q&A, and content generation.  
-- Evaluate ROI by measuring time saved and improved productivity.  
+The traditional 3-2-1 backup rule has been upgraded to suit the cloud era:
 
-### Takeaways
+- **3** copies of data.
+- **2** different storage media.
+- **1** off-site copy (different region).
+- **1** offline or **Immutable** (Air-gapped) copy.
+- **0** errors during recovery (verified by automated testing).
 
-- AWS provides end-to-end cloud infrastructure to support AI applications.  
-- Foundation models enable rapid AI innovation without building models from scratch.  
-- Amazon Bedrock simplifies deployment and scaling of AI-powered applications.  
-- Hands-on experimentation is critical to understanding cloud AI workflows.  
+Important concepts to remember:
 
-### Event Experience
+- **RPO (Recovery Point Objective):** How much data loss is acceptable?
+- **RTO (Recovery Time Objective):** How long does it take to get the system running again?
+- **Backup Vault:** A container for storing backups, encrypted by AWS KMS for enhanced security.
 
-- Interactive demos by each speaker helped clarify complex concepts.  
-- Opportunity to ask questions about real-world AWS and AI use cases.  
-- Networking with peers and speakers enhanced understanding of AI in cloud environments.  
+### 5. Tool Ecosystem & Solutions
 
-> Overall, the workshop provided a comprehensive understanding of AWS services, foundation models, and Amazon Bedrock, emphasizing practical skills, experimentation, and AI-driven cloud development.
+The event introduced powerful integrated solutions on AWS:
+
+- **Commvault Cloud on AWS:**
+  - Provides _Air Gap Protect_ (secure data isolation).
+  - _Cloud Rewind:_ The ability to "rewind" time to restore entire instances or VPCs as if the incident never happened.
+- **Clumio:**
+  - An all-in-one simplified backup solution.
+  - Uses _Serverless Workflow_ architecture (an army of Lambda functions) to optimize costs and operations.
+- **Elastio:**
+  - Focuses on: Detect, Respond, Recover.
+  - Scans for Malware/Ransomware directly within Snapshots to ensure backups do not contain latent malicious code.
+
+### 6. Workshop Architecture: Real-world Implementation
+
+During the hands-on session, we deployed a comprehensive protection model:
+
+**Key Components:**
+
+- **Source:** EC2 Instances (EBS) and S3 Buckets containing critical data.
+- **Mechanism:** Using **AWS Backup Plan** with an hourly schedule.
+- **Protection Layers:**
+  - _Primary:_ Stored in a standard Vault (`workshop-sources-regular-vault`).
+  - _Secondary (Air-gapped):_ Copied to another Region (`us-east-1-LAG-Vault`) with **Immutability** settings enabled.
+- **Validation:** Integrated **Elastio** with AWS Backup.
+  - Automated Malware scanning on backups.
+  - Performed hourly _Restore Testing_ to ensure backup viability (the "0 error" strategy).
+
+---
+
+### Conclusion
+
+The event shifted my mindset from merely "backing up data" to "building resiliency." In an era where cyberattacks are inevitable, possessing a Data Resiliency strategy featuring **Immutability** and **Automation** (using tools like Elastio or Commvault) is vital for business survival.
+
+#### Some photos from the event
+
+- Add your photos here
+  > Overall, the event not only provided technical knowledge but also helped me change my thinking regarding application design, system modernization, and more effective team collaboration.

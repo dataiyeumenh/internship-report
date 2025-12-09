@@ -1,103 +1,75 @@
 ---
 title: "Event 1"
-date: "`r Sys.Date()`"
+date: 2025-09-18
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Vietnam Cloud Day
 
-# Bài thu hoạch “AI-Driven Development Life Cycle: Reimagining Software Engineering.”
+### Mục tiêu sự kiện
 
-### Mục Đích Của Sự Kiện
+- Cung cấp tầm nhìn chiến lược cho đội ngũ lãnh đạo về cách điều hướng trong cuộc cách mạng AI tạo sinh (Generative AI).
+- Chia sẻ các phương pháp tối ưu để xây dựng nền tảng dữ liệu thống nhất và có khả năng mở rộng trên AWS.
+- Giới thiệu Vòng đời phát triển phần mềm định hướng AI (AI-DLC) và tác động của nó đến quá trình triển khai phần mềm.
+- Khám phá các nguyên tắc bảo mật cốt lõi cho Generative AI và tương lai của các Tác nhân AI (AI Agents).
 
-- Giới thiệu tầm quan trọng của AI trong toàn bộ vòng đời phát triển phần mềm.
-- Hướng dẫn cách tích hợp AI vào SDLC để tự động hóa các task lặp lại.
-- Khám phá các công cụ AI hỗ trợ lập kế hoạch, phát triển, kiểm thử, triển khai và duy trì ứng dụng.
+### Diễn giả
 
-### Danh Sách Diễn Giả
+- **Eric Yeo** – Tổng giám đốc AWS tại Việt Nam, Campuchia, Lào & Myanmar
+- **Tiến sĩ Jens Lottner** – CEO, Techcombank
+- **Bà Trang Phùng** – CEO & Đồng sáng lập, U2U Network
+- **Jaime Valles** – Phó chủ tịch & Tổng giám đốc khu vực APJ, AWS
+- **Các khách mời tọa đàm:** Jeff Johnson, Vũ Văn (ELSA), Nguyễn Hòa Bình (Nexttech), Dieter Botha (TymeX)
+- **Các chuyên gia từ AWS:** Kiên Nguyễn, Jun Kai Loke, Tamelly Lim, Bình Trần, Taiki Dang, Michael Armentano
 
-- **Toan Huynh** – Amazon Q Developer demonstration
-- **My Nguyen** – Kiro demonstration
-- **Coordinators:** Diem My, Dai Truong, Dinh Nguyen
+### Các điểm nhấn chính
 
-### Nội Dung Nổi Bật
+#### 1. Lãnh đạo chiến lược và Tầm nhìn
 
-#### AI-Driven Development Life Cycle Overview
+- **Bài phát biểu chủ chốt:** Các lãnh đạo từ AWS, Techcombank và U2U Network đã chia sẻ tầm nhìn về việc áp dụng điện toán đám mây và AI trong khu vực.
+- **Tọa đàm lãnh đạo:** Thảo luận về chủ đề "Điều hướng cuộc cách mạng GenAI", tập trung vào việc nuôi dưỡng văn hóa đổi mới sáng tạo, điều chỉnh AI phù hợp với mục tiêu kinh doanh và quản lý sự thay đổi của tổ chức khi tích hợp công nghệ mới.
 
-- Tích hợp AI vào kiến trúc, phát triển, kiểm thử, triển khai và bảo trì.
-- Tự động hóa các task không phân biệt, tăng năng suất và cho phép developer tập trung vào các task giá trị cao hơn.
-- Giải pháp giúp cải thiện chất lượng sản phẩm và rút ngắn thời gian release.
+#### 2. Nền tảng dữ liệu và Lộ trình phát triển
 
-#### Amazon Q Developer
+- **Nền tảng dữ liệu thống nhất:** Phiên thảo luận vạch ra cách xây dựng cơ sở hạ tầng mạnh mẽ để xử lý việc thu thập, lưu trữ và quản trị dữ liệu. Đây là tiền đề quan trọng cho các khối lượng công việc phân tích nâng cao và AI.
+- **Lộ trình GenAI:** AWS trình bày tầm nhìn toàn diện và các xu hướng mới nổi nhằm trao quyền cho các tổ chức tận dụng GenAI để tối ưu hóa hiệu quả.
 
-- **SDLC automation:** Hỗ trợ từ planning đến maintenance.
-- **Code transformation:** Hỗ trợ hiện đại hóa code và nâng cấp công nghệ.
-- **Workflow integration:** Tăng năng suất bằng cách tích hợp AI vào quá trình phát triển hiện tại.
+#### 3. Tương lai của phát triển phần mềm
 
-#### Kiro
+- **Vòng đời phát triển phần mềm định hướng AI (AI-DLC):** Một cách tiếp cận mang tính chuyển đổi, nơi AI không chỉ là trợ lý mà đóng vai trò là cộng sự trung tâm. Mô hình này tích hợp khả năng thực thi của AI với sự giám sát của con người để cải thiện đáng kể tốc độ và sự đổi mới, vượt xa các phương pháp truyền thống.
 
-- Hỗ trợ phát triển ứng dụng với AI.
-- Giúp tạo, kiểm thử và triển khai ứng dụng nhanh hơn.
-- Cải thiện trải nghiệm developer và giảm rủi ro trong quá trình phát triển.
+#### 4. Bảo mật và Tự động hóa nâng cao
 
-### Những Gì Học Được
+- **Bảo mật GenAI:** Đề cập đến bảo mật ở ba lớp: cơ sở hạ tầng, mô hình và ứng dụng. Nhấn mạnh các biện pháp tích hợp sẵn như mã hóa, kiến trúc Zero-trust và kiểm soát truy cập chi tiết.
+- **Tác nhân AI (AI Agents):** Phiên bế mạc làm nổi bật sự chuyển dịch từ tự động hóa cơ bản sang các Tác nhân thông minh – những đối tác có khả năng học hỏi, thích nghi và thực hiện các tác vụ phức tạp một cách tự chủ.
 
-#### Tư Duy Thiết Kế
+### Bài học rút ra
 
-- **Business-first approach:** Bắt đầu từ nhu cầu kinh doanh thay vì công nghệ.
-- **Automation mindset:** Tận dụng AI để giảm workload thủ công và tập trung vào sáng tạo.
-- **SDLC visibility:** Hiểu rõ các bước trong vòng đời phát triển phần mềm được AI hỗ trợ.
+#### Thay đổi về văn hóa
 
-#### Kiến Trúc Kỹ Thuật
+- **AI-DLC:** Phát triển phần mềm đang chuyển từ "con người dẫn dắt với sự hỗ trợ của AI" sang "hợp tác lấy AI làm trung tâm", đòi hỏi sự thay đổi trong cách các nhóm tiếp cận việc lập trình và kiểm thử.
+- **Tác nhân so với Tự động hóa:** Có sự khác biệt rõ rệt giữa các kịch bản tự động hóa tĩnh và các Tác nhân AI năng động có thể ra quyết định và thích ứng với các đầu vào thay đổi.
 
-- **AI integration points:** Xác định các giai đoạn SDLC mà AI có thể tối ưu.
-- **Workflow efficiency:** Tăng tốc lập kế hoạch, phát triển, kiểm thử và triển khai.
-- **Monitoring & feedback:** Sử dụng AI để dự đoán rủi ro và cải thiện chất lượng sản phẩm.
+#### Các trụ cột kỹ thuật
 
-#### Chiến Lược Hiện Đại Hóa
+- **Dữ liệu là ưu tiên hàng đầu:** Doanh nghiệp không thể triển khai GenAI thành công nếu thiếu một nền tảng dữ liệu thống nhất và được quản trị tốt.
+- **Bảo mật ngay từ thiết kế:** Bảo mật cho GenAI phải liên tục và phân lớp, đảm bảo tính bảo mật dữ liệu trong suốt vòng đời.
 
-- **Productivity boost:** Sử dụng AI như một trợ lý phát triển.
-- **Phased adoption:** Thử nghiệm công cụ AI theo từng giai đoạn.
-- **ROI measurement:** Đánh giá hiệu quả dựa trên năng suất và giảm lỗi phát triển.
+### Ứng dụng vào công việc
 
-### Ứng Dụng Vào Công Việc
+- **Đánh giá độ sẵn sàng của dữ liệu:** Rà soát cơ sở hạ tầng dữ liệu AWS hiện tại để đảm bảo đáp ứng các yêu cầu về khả năng mở rộng và quản trị cho GenAI (dựa trên phiên Nền tảng dữ liệu thống nhất).
+- **Khám phá Tác nhân AI:** Xác định các tác vụ vận hành thủ công, phức tạp có thể chuyển giao cho các Tác nhân AI tự chủ thay vì các kịch bản đơn giản.
+- **Áp dụng AI-DLC:** Thử nghiệm việc nhúng các công cụ AI sâu hơn vào vòng đời phát triển để hoạt động như những cộng sự thay vì chỉ là công cụ hoàn thành mã.
 
-- **Tích hợp Amazon Q Developer** vào workflow phát triển để tự động hóa các task lặp lại.
-- **Sử dụng Kiro** để tối ưu hóa phát triển và kiểm thử ứng dụng.
-- **Theo dõi SDLC bằng AI** để cải thiện chất lượng và giảm thời gian release.
-- **Tư duy AI-driven:** Áp dụng triết lý AI-First vào dự án hiện tại.
+### Trải nghiệm sự kiện
 
-### Trải nghiệm trong event
+Hội nghị này đã cung cấp một cái nhìn toàn diện về bối cảnh GenAI, cân bằng giữa chiến lược điều hành cấp cao và các nội dung chuyên sâu về kỹ thuật.
 
-Workshop **“AI-Driven Development Life Cycle: Reimagining Software Engineering”** là một trải nghiệm bổ ích, giúp tôi nắm bắt cách AI thay đổi quy trình phát triển phần mềm:
+- **Góc nhìn chiến lược:** Phiên tọa đàm với các lãnh đạo từ ELSA, Nexttech và TymeX đã mang lại những quan điểm thực tế quý giá về việc quản lý những thay đổi văn hóa mà AI mang lại.
+- **Chiều sâu kỹ thuật:** Các phiên buổi chiều đặc biệt hữu ích, cụ thể là phần chuyên sâu về AI-DLC và Bảo mật GenAI, đây là những mối quan tâm trực tiếp cho lộ trình kỹ thuật của chúng tôi.
 
-#### Học hỏi từ các diễn giả
+#### Một số hình ảnh sự kiện
 
-- Các chuyên gia chia sẻ về cách AI hỗ trợ lập kế hoạch, phát triển, kiểm thử và triển khai ứng dụng.
-- Trình bày thực tế về **Amazon Q Developer** và **Kiro**, giúp hiểu rõ cách tích hợp AI vào SDLC.
-
-#### Trải nghiệm kỹ thuật thực tế
-
-- Quan sát demo live từ Toan Huynh và My Nguyen.
-- Hiểu rõ workflow AI-driven từ lập kế hoạch đến bảo trì.
-- Nhận thấy lợi ích rõ ràng trong việc tự động hóa các task lặp lại.
-
-#### Kết nối và trao đổi
-
-- Workshop tạo cơ hội trao đổi trực tiếp với diễn giả và các đồng nghiệp.
-- Cải thiện **common language** giữa developer và business team khi áp dụng AI.
-
-#### Bài học rút ra
-
-- AI có thể tăng **năng suất**, giảm **rủi ro phát triển** và cải thiện chất lượng sản phẩm.
-- Tích hợp AI cần **phased approach** và theo dõi ROI.
-- Công cụ như Amazon Q Developer và Kiro là trợ thủ đắc lực để thúc đẩy **AI-driven SDLC**.
-
-#### Một số hình ảnh khi tham gia sự kiện
-![checkin](/image/4-Event/checkin.jpeg)
-
-> Tổng thể, sự kiện cung cấp cái nhìn toàn diện về cách AI thay đổi vòng đời phát triển phần mềm, đồng thời giúp nâng cao năng suất và chất lượng dự án.
+_Thêm hình ảnh sự kiện của bạn tại đây_

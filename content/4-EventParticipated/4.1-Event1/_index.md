@@ -1,103 +1,75 @@
 ---
 title: "Event 1"
-date: "`r Sys.Date()`"
+date: 2025-09-18
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
-
-# Workshop Report: “AI-Driven Development Life Cycle: Reimagining Software Engineering”
+# Vietnam Cloud Day
 
 ### Event Objectives
 
-- Introduce the importance of AI across the entire software development lifecycle (SDLC).  
-- Guide on integrating AI into SDLC to automate repetitive tasks.  
-- Explore AI tools that support planning, development, testing, deployment, and maintenance of applications.  
+- Equip executive leadership with strategic insights to navigate the Generative AI era.
+- Disseminate best practices for establishing a unified, scalable data foundation on AWS.
+- Present the AI-Driven Development Lifecycle (AI-DLC) and its transformative role in software engineering.
+- Examine core security principles for Generative AI and the evolution toward autonomous AI Agents.
 
 ### Speakers
 
-- **Toan Huynh** – Amazon Q Developer demonstration  
-- **My Nguyen** – Kiro demonstration  
-- **Coordinators:** Diem My, Dai Truong, Dinh Nguyen  
+- **Eric Yeo** – Country GM, Vietnam, Cambodia, Laos & Myanmar, AWS
+- **Dr. Jens Lottner** – CEO, Techcombank
+- **Ms. Trang Phung** – CEO & Co-Founder, U2U Network
+- **Jaime Valles** – VP & GM APJ, AWS
+- **Panelists:** Jeff Johnson, Vu Van (ELSA), Nguyen Hoa Binh (Nexttech), Dieter Botha (TymeX)
+- **AWS Specialists:** Kien Nguyen, Jun Kai Loke, Tamelly Lim, Binh Tran, Taiki Dang, Michael Armentano
 
 ### Key Highlights
 
-#### AI-Driven Development Life Cycle Overview
+#### 1. Strategic Leadership & Vision
 
-- Integrating AI into architecture, development, testing, deployment, and maintenance.  
-- Automating undifferentiated tasks to increase productivity and allow developers to focus on higher-value work.  
-- Solutions improve product quality and reduce release times.  
+- **Keynote Sessions:** Leaders from AWS, Techcombank, and U2U Network outlined their vision for cloud and AI adoption across the region.
+- **Executive Panel:** A discussion titled "Navigating the GenAI Revolution" focused on building an innovation-centric culture, aligning AI with business strategy, and managing organizational change during AI integration.
 
-#### Amazon Q Developer
+#### 2. Data Foundation & Roadmap
 
-- **SDLC automation:** Supports the full lifecycle from planning to maintenance.  
-- **Code transformation:** Assists in modernizing code and upgrading technology.  
-- **Workflow integration:** Boosts productivity by integrating AI into current development workflows.  
+- **Unified Data Foundation:** This session detailed the construction of a robust infrastructure for data ingestion, storage, and governance—a mandatory prerequisite for effective AI workloads.
+- **GenAI Roadmap:** AWS showcased its comprehensive vision and emerging tools designed to empower organizations to drive efficiency through GenAI.
 
-#### Kiro
+#### 3. The Future of Software Development
 
-- Supports AI-assisted application development.  
-- Accelerates creation, testing, and deployment of applications.  
-- Improves developer experience and reduces development risks.  
+- **AI-Driven Development Lifecycle (AI-DLC):** Discussions centered on a shift where AI acts not merely as an assistant but as a central collaborator. This model combines AI execution with human oversight to accelerate innovation beyond traditional methodologies.
 
-### Key Learnings
+#### 4. Security & Advanced Automation
 
-#### Design Thinking
+- **Securing GenAI:** Security was addressed across three layers: infrastructure, models, and applications, emphasizing encryption, zero-trust architecture, and granular access controls.
+- **AI Agents:** The event concluded with a focus on the shift from basic automation to Intelligent Agents—systems capable of learning, adapting, and executing complex tasks autonomously.
 
-- **Business-first approach:** Start from business needs rather than technology.  
-- **Automation mindset:** Leverage AI to reduce manual workload and focus on creative tasks.  
-- **SDLC visibility:** Understand the AI-assisted steps in the software development lifecycle.  
+### Key Takeaways
 
-#### Technical Architecture
+#### Cultural Shift
 
-- **AI integration points:** Identify SDLC stages where AI can provide optimization.  
-- **Workflow efficiency:** Accelerate planning, development, testing, and deployment.  
-- **Monitoring & feedback:** Use AI to predict risks and enhance product quality.  
+- **Adopting AI-DLC:** Software development is evolving from human-led efforts with AI assistance to AI-centric collaboration, requiring teams to adapt their coding and testing approaches.
+- **Agents vs. Automation:** There is a fundamental difference between static automation scripts and dynamic AI Agents that can make decisions based on changing inputs.
 
-#### Modernization Strategy
+#### Technical Pillars
 
-- **Productivity boost:** Use AI as a development assistant.  
-- **Phased adoption:** Pilot AI tools gradually.  
-- **ROI measurement:** Evaluate effectiveness through productivity gains and reduced errors.  
+- **Data First:** A unified and governed data foundation is critical for GenAI success.
+- **Security by Design:** Security measures must be continuous and layered to ensure data confidentiality throughout the AI lifecycle.
 
-### Practical Application
+### Applying to Work
 
-- **Integrate Amazon Q Developer** into development workflows to automate repetitive tasks.  
-- **Use Kiro** to optimize application development and testing.  
-- **Monitor SDLC with AI** to improve quality and reduce release time.  
-- **AI-driven mindset:** Apply AI-first philosophy to current projects.  
+- **Assess Data Readiness:** Evaluate the current AWS data infrastructure to ensure it meets the scalability and governance standards required for GenAI (referencing the Unified Data Foundation session).
+- **Explore AI Agents:** Identify complex manual operations that are suitable for offloading to autonomous AI Agents rather than simple scripts.
+- **Adopt AI-DLC:** Experiment with integrating AI tools more deeply into the development lifecycle, treating them as collaborators rather than just code completion utilities.
 
 ### Event Experience
 
-The **“AI-Driven Development Life Cycle: Reimagining Software Engineering”** workshop was highly insightful, helping me understand how AI transforms the software development process:
+The summit offered a holistic perspective on the GenAI landscape, effectively balancing high-level strategy with technical depth.
 
-#### Learning from Experts
+- **Strategic Insight:** The panel featuring leaders from ELSA, Nexttech, and TymeX provided valuable real-world context on managing the cultural impact of AI.
+- **Technical Depth:** The afternoon tracks were highly relevant, particularly the deep dives into AI-DLC and Securing GenAI, which directly align with our technical roadmap.
 
-- Speakers shared how AI assists planning, development, testing, and deployment.  
-- Live demonstrations of **Amazon Q Developer** and **Kiro** provided practical insights into AI integration in SDLC.  
+#### Some event photos
 
-#### Hands-on Technical Experience
-
-- Observed live demos by Toan Huynh and My Nguyen.  
-- Gained a clear understanding of the AI-driven workflow from planning to maintenance.  
-- Witnessed the benefits of automating repetitive tasks.  
-
-#### Networking and Interaction
-
-- Opportunity to directly interact with experts and peers.  
-- Improved **common language** between developers and business teams when applying AI.  
-
-#### Key Takeaways
-
-- AI can enhance **productivity**, reduce **development risks**, and improve product quality.  
-- AI integration requires a **phased approach** and monitoring of **ROI**.  
-- Tools like Amazon Q Developer and Kiro are valuable for driving an **AI-driven SDLC**.  
-
-#### Event Photos
-![checkin](/image/4-Event/checkin.jpeg)
-
-> Overall, the event provided a comprehensive view of how AI transforms the software development lifecycle, while enhancing productivity and project quality.
+_Add your event photos here_
